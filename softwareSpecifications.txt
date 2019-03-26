@@ -86,10 +86,27 @@ III. Finance management
             + Deadline
             + Rest
             + Status
+        - Expenditure categories:
+            + Employee
+            + Amount of money
+            + Deadline
+            + Rest
+            + Status
 IV.     Projects management
-V.      Infrastrcutures management
+V.      Infrastructures management
     1. Features:
-        - 
+        - View status of infrastructures
+        - Borrow/Return infrastructures
+        - Add/Remove/Edit infrastructures        
     2. Users:
+        - Admin users:
+            + Add/Remove/Edit infrastructures
+            + View status of infrastructures
+            + Accept borrow request
+            + Confirm the borrower has returned
+        Other users:
+            + View status of infrastructures
+            + Send borrow request
+    3. Data:
 VI.     Local user services
 VII.    Community services
