@@ -4,9 +4,21 @@ I.      Employee profile management
 II.     Organizational structure management
 III.    Finance management
     1. Features:
-        - Revenue and expenditure management
+        - View current budget
+        - Revenue
+            + View revenue items
+            + Add revenue items
+            + Print receipt
+        - Expenditure
+            + View expenditure items
+            + Add expenditure items
+            + Print receipt
     2. Users:
-        - Only admin users
+        - Admin users:
+            + Full authority
+        - Other users:
+            + View budget
+            + View revenue and expenditure items
 IV.     Projects management
 V.      Infrastrcutures management
 VI.     Local user services
