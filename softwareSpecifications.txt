@@ -1,6 +1,8 @@
 TICKLAB INFORMATION SYSTEM Specifications
 
-I.  Employee profile management
-II. Organizational structure management
-III. Finance management
-IV. 
+I.      Employee profile management
+II.     Organizational structure management
+III.    Finance management
+IV.     Projects management
+V.      Local user services
+VI.     Community services
