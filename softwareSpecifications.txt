@@ -15,6 +15,7 @@ I. Employee profile management
             by the System Admin
     3. Data:
         - Users profile:
+            + Profile number
             + Legal identidication
                 -- Nationality
                 -- Fullname
@@ -33,7 +34,20 @@ I. Employee profile management
                     ++ Date of expiry
                     ++ Place of issue
             + Local identidication
-                
+                -- TickLab ID card (many, in the case of reissuance)
+                    ++ RFID number
+                    ++ Date of issue
+            + Contact information
+                -- Phone number (many): Mark some phone number as recently used
+                -- Contact address (many): Mark some address as recently used
+                -- Email address (many): Mark some email addr as recently used
+            + Other information
+                -- Portfolio link
+                -- Related documents links (many)
+            + System login information
+                -- username;
+                -- password;
+                -- System role: System admin/ Director/ Manager... (would be describe later)
 II. Organizational structure management
 III. Finance management
     1. Features:
