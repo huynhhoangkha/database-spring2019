@@ -3,6 +3,10 @@ TICKLAB INFORMATION SYSTEM Specifications
 I.      Employee profile management
 II.     Organizational structure management
 III.    Finance management
+    1. Features:
+        - Revenue and expenditure management
+    2. Users:
+        - Only admin users
 IV.     Projects management
 V.      Infrastrcutures management
 VI.     Local user services
