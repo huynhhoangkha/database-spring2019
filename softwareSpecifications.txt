@@ -1,2 +1,5 @@
-TICKLAB DATA SYSTEM
+TICKLAB INFORMATION SYSTEM Specifications
 
+I.  Employee profile management
+II. Organizational structure management
+III.
