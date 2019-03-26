@@ -52,7 +52,6 @@ III. Finance management
         - Other users:
             + View budget
             + View revenue and expenditure items
-<<<<<<< HEAD
 IV.     Projects management
 V.      Infrastrcutures management
     1. Features:
@@ -60,10 +59,3 @@ V.      Infrastrcutures management
     2. Users:
 VI.     Local user services
 VII.    Community services
-=======
-IV. Projects management
-V. Infrastrcutures management
-VI. Local user services
-VII. Community services
-
->>>>>>> a6ce145dfd42f7211d2700d46f8fad5e736120b7
