@@ -3,6 +3,3 @@
 - Add file: softwareSpecifications
     - Kha: I, II
     - Soi: III, IV, V
->Hello
->>Hello
->Hi
