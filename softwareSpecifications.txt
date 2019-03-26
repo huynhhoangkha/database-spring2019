@@ -82,17 +82,24 @@ III. Finance management
             + View personal finance statistic
     3. Data:
         - Revenue category:
-            + Employee
+            + Employee (many)
             + Amount of money
             + Deadline
             + Rest
             + Status
+            + Describe
         - Expenditure categories:
-            + Employee
+            + Employee (many)
             + Amount of money
-            + Deadline
             + Rest
             + Status
+            + Describe
+        - Revenue/expenditure records
+            + Employee
+            + Kind of record (Revenue or Expenditure?)
+            + Amount of money
+            + Date
+            + Accountant
 IV.     Projects management
 V.      Infrastructures management
     1. Features:
