@@ -127,4 +127,7 @@ V.      Infrastructures management
             + Numbers of infrastructure available
         - 
 VI.     Local user services
+    1. Features:
+        - Duty register System
+        -
 VII.    Community services
