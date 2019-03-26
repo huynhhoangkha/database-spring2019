@@ -49,6 +49,7 @@ I. Employee profile management
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be describe later)
 II. Organizational structure management
+    
 III. Finance management
     1. Features:
         - View current budget
