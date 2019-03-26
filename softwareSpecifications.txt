@@ -87,13 +87,13 @@ III. Finance management
             + Deadline
             + Rest
             + Status
-            + Describe
+            + Descriptions
         - Expenditure categories:
             + Employee (many)
             + Amount of money
             + Rest
             + Status
-            + Describe
+            + Descriptions
         - Revenue/expenditure records
             + Employee
             + Kind of record (Revenue or Expenditure?)
@@ -103,8 +103,9 @@ III. Finance management
 IV.     Projects management
 V.      Infrastructures management
     1. Features:
+        - View list of infrastructures
         - View status of infrastructures
-        - Borrow/Return infrastructures
+        - Borrow/Return requests
         - Add/Remove/Edit infrastructures        
     2. Users:
         - Admin users:
@@ -112,9 +113,19 @@ V.      Infrastructures management
             + View status of infrastructures
             + Accept borrow request
             + Confirm the borrower has returned
-        Other users:
+        - Other users:
             + View status of infrastructures
-            + Send borrow request
+            + Send borrow/return request
     3. Data:
+        - Infrastructures
+            + ID (for kind of item only)
+            + Number of items
+            + Descriptions
+        - Borrow/Return record
+            + Employee
+            + Item
+            + Number of item
+            + Record type (Borrow or return)
+            + Date
 VI.     Local user services
 VII.    Community services
