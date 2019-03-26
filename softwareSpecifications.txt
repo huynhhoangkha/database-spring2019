@@ -96,7 +96,11 @@ IV.     Projects management
 V.      Infrastructures management
     1. Features:
         - View status of infrastructures
-        - Borrow/Return infrastructures
+        - Borrow infrastructures
+            + Send borrow request
+            + Accept borrow request
+        - Return infrastructures
+            + Confirm the borrower has returned
         - Add/Remove/Edit infrastructures        
     2. Users:
         - Admin users:
@@ -108,5 +112,11 @@ V.      Infrastructures management
             + View status of infrastructures
             + Send borrow request
     3. Data:
+        - Each infrastructure type:
+            + Infrastructure type ID
+            + Name of infrastructure type
+            + Total number of infrastructure
+            + Numbers of infrastructure available
+        - 
 VI.     Local user services
 VII.    Community services
