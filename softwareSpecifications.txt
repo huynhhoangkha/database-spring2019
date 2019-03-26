@@ -65,8 +65,13 @@ III. Finance management
             + View budget
             + View revenue and expenditure categories
             + View personal finance statistic
-    3. Data
-        //Todo
+    3. Data:
+        - Revenue category:
+            + Employee
+            + Amount of money
+            + Deadline
+            + Rest
+            + Status
 IV.     Projects management
 V.      Infrastrcutures management
     1. Features:
