@@ -21,5 +21,8 @@ III.    Finance management
             + View revenue and expenditure items
 IV.     Projects management
 V.      Infrastrcutures management
+    1. Features:
+        - 
+    2. Users:
 VI.     Local user services
 VII.    Community services
