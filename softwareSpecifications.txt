@@ -38,20 +38,35 @@ II. Organizational structure management
 III. Finance management
     1. Features:
         - View current budget
-        - Revenue
-            + View revenue items
-            + Add revenue items
+        - View finance statistic
+        - Revenue categories management
+            + Add revenue categories
+            + Edit revenue categories
+            + View revenue categories
+            + Add/remove/edit employee
+                -- Add/remove/edit by person
+                -- Add/remove/edit by list
+            + Add/remove records
             + Print receipt
-        - Expenditure
-            + View expenditure items
-            + Add expenditure items
+        - Expenditure categories management
+            + Add expenditure categories
+            + Edit expenditure categories
+            + View expenditure categories
+            + Add/remove/edit employee
+                -- Add/remove/edit by person
+                -- Add/remove/edit by list
+            + Add/remove employee
+            + Add/remove records
             + Print receipt
     2. Users:
         - Admin users:
             + Full authority
         - Other users:
             + View budget
-            + View revenue and expenditure items
+            + View revenue and expenditure categories
+            + View personal finance statistic
+    3. Data
+        //Todo
 IV.     Projects management
 V.      Infrastrcutures management
     1. Features:
