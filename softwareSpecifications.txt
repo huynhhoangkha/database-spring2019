@@ -47,15 +47,25 @@ I. Employee profile management
             + System login information
                 -- username;
                 -- password;
-                -- System role: System admin/ Director/ Manager... (would be describe later)
+                -- System role: System admin/ Director/ Manager... (would be described later)
 II. Organizational structure management
     1. Features
         - Add/edit/remove department info
         - View department info
-        - Assign/remove employee to/from department
-        - Specify department human resource
+        - Manage department human resouce
+            + Assign/remove employee to/from department
+            + Enroll department position
     2. Users
+        - System admin: full permission
+        - Other user: View department info
     3. Data
+        - Department information
+            + Department ID
+            + Department name
+            + Department descriptions
+            + Department human resouce
+                -- 
+            + Department projects
 III. Finance management
     1. Features:
         - View current budget
