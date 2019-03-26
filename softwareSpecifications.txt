@@ -49,6 +49,7 @@ I. Employee profile management
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be describe later)
 II. Organizational structure management
+    
 III. Finance management
     1. Features:
         - View current budget
@@ -81,17 +82,24 @@ III. Finance management
             + View personal finance statistic
     3. Data:
         - Revenue category:
-            + Employee
+            + Employee (many)
             + Amount of money
             + Deadline
             + Rest
             + Status
+            + Describe
         - Expenditure categories:
-            + Employee
+            + Employee (many)
             + Amount of money
-            + Deadline
             + Rest
             + Status
+            + Describe
+        - Revenue/expenditure records
+            + Employee
+            + Kind of record (Revenue or Expenditure?)
+            + Amount of money
+            + Date
+            + Accountant
 IV.     Projects management
 V.      Infrastructures management
     1. Features:
