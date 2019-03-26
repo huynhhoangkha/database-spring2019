@@ -49,7 +49,13 @@ I. Employee profile management
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be describe later)
 II. Organizational structure management
-    
+    1. Features
+        - Add/edit/remove department info
+        - View department info
+        - Assign/remove employee to/from department
+        - Specify department human resource
+    2. Users
+    3. Data
 III. Finance management
     1. Features:
         - View current budget
@@ -87,13 +93,13 @@ III. Finance management
             + Deadline
             + Rest
             + Status
-            + Describe
+            + Descriptions
         - Expenditure categories:
             + Employee (many)
             + Amount of money
             + Rest
             + Status
-            + Describe
+            + Descriptions
         - Revenue/expenditure records
             + Employee
             + Kind of record (Revenue or Expenditure?)
@@ -103,7 +109,9 @@ III. Finance management
 IV.     Projects management
 V.      Infrastructures management
     1. Features:
+        - View list of infrastructures
         - View status of infrastructures
+        - Borrow/Return requests
         - Borrow infrastructures
             + Send borrow request
             + Accept borrow request
@@ -116,16 +124,22 @@ V.      Infrastructures management
             + View status of infrastructures
             + Accept borrow request
             + Confirm the borrower has returned
-        Other users:
+        - Other users:
             + View status of infrastructures
-            + Send borrow request
+            + Send borrow/return request
     3. Data:
-        - Each infrastructure type:
-            + Infrastructure type ID
-            + Name of infrastructure type
-            + Total number of infrastructure
-            + Numbers of infrastructure available
-        - 
+        - Infrastructures
+            + ID (for kind of item only)
+            + Name
+            + Total number of items
+            + Number of available
+            + Descriptions
+        - Borrow/Return record
+            + Employee
+            + Item
+            + Number of item
+            + Record type (Borrow or return)
+            + Date
 VI.     Local user services
     1. Features:
         - Duty register System
