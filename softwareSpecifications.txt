@@ -157,6 +157,10 @@ VI.     Local user services
                 -- Daily
                 -- Weekly
                 -- Monthly
-            + Join/
+            + Join/Out shift
+            + Swap shift with another user
+                -- Send swap request
+                -- Accept/Reject swap request
+            + Change shift
         -
 VII.    Community services
