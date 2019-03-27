@@ -164,10 +164,15 @@ VI. Local user services
                 -- Accept/Reject swap request
             + Move to an available shift
         - Internal event
-            + Party
-            + Travelling
-            + Team building
-            + Camping
+            + Create/Remove an internal event
+                -- Name
+                    ++ Party
+                    ++ Travelling
+                    ++ Team building
+                    ++ Camping
+                -- Time
+                -- Cost
+                
         - 
     2. Users:
     3. Data:
