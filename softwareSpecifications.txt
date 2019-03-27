@@ -116,8 +116,8 @@ III. Finance management
             + Amount of money
             + Date
             + Accountant
-IV.     Projects management
-V.      Infrastructures management
+IV. Projects management
+V. Infrastructures management
     1. Features:
         - View list of infrastructures
         - View status of infrastructures
@@ -150,17 +150,25 @@ V.      Infrastructures management
             + Number of item
             + Record type (Borrow or return)
             + Date
-VI.     Local user services
+VI. Local user services
     1. Features:
-        - Duty register System
+        - Duty register system
             + Create/Remove Duty
                 -- Daily
                 -- Weekly
                 -- Monthly
+            + View duty
             + Join/Out shift
             + Swap shift with another user
                 -- Send swap request
                 -- Accept/Reject swap request
-            + Change shift
-        -
+            + Move to an available shift
+        - Internal event
+            + Party
+            + Travelling
+            + Team building
+            + Camping
+        - 
+    2. Users:
+    3. Data:
 VII.    Community services
