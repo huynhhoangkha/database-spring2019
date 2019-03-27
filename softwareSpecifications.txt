@@ -143,5 +143,10 @@ V.      Infrastructures management
 VI.     Local user services
     1. Features:
         - Duty register System
+            + Create/Remove Duty
+                -- Daily
+                -- Weekly
+                -- Monthly
+            + Join/
         -
 VII.    Community services
