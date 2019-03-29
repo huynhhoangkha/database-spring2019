@@ -207,7 +207,7 @@ VI. Local user services
             + Place
             + Cost
             + Participants
-VII.    Community services
+VII. Community services
     1. Features:
         - Hold a training class:
             + Computer
@@ -216,5 +216,13 @@ VII.    Community services
             + Soft skill
         - Hold a seminar/workshop
         - Post scientific articles
+        - Create member recruitment form
+            + Data will be sent to the server to create interview schedule automatically
+        - Automatically create interview schedule system
+        - Black list
     2. Users:
+        - Admin users only
     3. Data:
+        - Training class
+            +
+        - 
