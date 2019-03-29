@@ -48,6 +48,8 @@ I. Employee profile management
                 -- username;
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be described later)
+            + Projects participated (list by time)
+            + Position took place (list by time)
 II. Organizational structure management
     1. Features
         - Add/edit/remove department info
@@ -63,9 +65,14 @@ II. Organizational structure management
             + Department ID
             + Department name
             + Department descriptions
-            + Department human resouce
-                -- 
-            + Department projects
+            + Department human resouce (list of position)
+            + Department projects (list of projects by time)
+        - Position:
+            + Position name
+            + Position descriptions
+            + Employee
+            + Start Date
+            + Stop date
 III. Finance management
     1. Features:
         - View current budget
