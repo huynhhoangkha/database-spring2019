@@ -232,7 +232,7 @@ VII. Community services
         - Application form
             + Name
                 -- First name
-                -- Middle name
+                -- Middle name 
                 -- Last name
             + Date of birth
             + Gender (Sex)
