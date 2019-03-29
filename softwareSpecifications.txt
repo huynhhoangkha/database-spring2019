@@ -48,7 +48,7 @@ I. Employee profile management
                 -- username;
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be described later)
-            + Projects participated (list by time)
+            + Project participation record list
             + Position took place (list by time)
 II. Organizational structure management
     1. Features
@@ -125,8 +125,48 @@ III. Finance management
             + Accountant
 IV. Projects management
     1. Features:
+        - Create/Edit/Remove project
+        - Add/Remove employees to project
+        - Assign task
+        - Update task log
+        - Start/Stop/Pause project
+        - View project (description, progress, participants, time...)
+        - Participants performance evaluation
     2. Users:
+        - System admin: Create project
+        - Project Manager: Edit/Remove, Add/Remove employee, assign tasks, evaluate participant's performance
+        - Participants: update task log
+        - Other user: View
     3. Data:
+        - Project
+            + Project ID
+            + Project name
+            + Descriptions
+            + Project owner (department)
+            + Project Manager (employee)
+            + Start time
+            + End time
+            + Participants (list of employees who participate in the project)
+            + Timeline (list of timeline note)
+                -- FromTime
+                -- ToTime
+                -- What to do
+                -- Status (Have not started, in progress, or finished)
+            + List of tasks
+                -- Task ID
+                -- Employee list (one or many)
+                -- Task description
+                -- Begin time
+                -- Task log
+                -- Task status
+            + Project fund
+        - Project participation records
+            + Employee (who)
+            + Project
+            + Start time
+            + Endtime
+            + TaskList
+            + Performance rate
 V. Infrastructures management
     1. Features:
         - View list of infrastructures
@@ -244,3 +284,6 @@ VII. Community services
             + Contact address
             + Social account
             + CV link
+
+Additional data table
+- 
