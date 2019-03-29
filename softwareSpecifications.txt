@@ -153,7 +153,7 @@ V. Infrastructures management
 VI. Local user services
     1. Features:
         - Duty register system
-            + Create/Remove Duty
+            + Create/Remove a duty
                 -- Daily
                 -- Weekly
                 -- Monthly
@@ -172,8 +172,36 @@ VI. Local user services
                     ++ Camping
                 -- Time
                 -- Cost
-                
-        - 
+            + View event
+            + Join/Out event
+            + Note
     2. Users:
+        - Admin users
+            + Create/Remove a service
+        - Other users
+            + View services
+            + Join/Out services
+            + Swap shift with another user
+            + Move to an available shift
     3. Data:
+        - A duty
+            + ID
+            + Name
+            + Time
+                -- Shift
+                -- Day
+                -- Week
+                -- Month
+                -- Year 
+            + Number of shift
+            + Members are on duty
+        - An event
+            + ID
+            + Name
+            + Time
+                -- Begin Time
+                -- End time
+            + Place
+            + Cost
+            + Participants
 VII.    Community services
