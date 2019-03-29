@@ -117,6 +117,9 @@ III. Finance management
             + Date
             + Accountant
 IV. Projects management
+    1. Features:
+    2. Users:
+    3. Data:
 V. Infrastructures management
     1. Features:
         - View list of infrastructures
@@ -205,3 +208,13 @@ VI. Local user services
             + Cost
             + Participants
 VII.    Community services
+    1. Features:
+        - Hold a training class:
+            + Computer
+            + Mechanical
+            + Electrical
+            + Soft skill
+        - Hold a seminar/workshop
+        - Post scientific articles
+    2. Users:
+    3. Data:
