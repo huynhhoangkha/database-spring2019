@@ -248,7 +248,7 @@ VII. Community services
         - Member recruitment form
             + Name
                 -- First name
-                -- Middle name
+                -- Middle name 
                 -- Last name
             + Date of birth
             + Research field
