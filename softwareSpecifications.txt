@@ -50,6 +50,7 @@ I. Employee profile management
                 -- System role: System admin/ Director/ Manager... (would be described later)
             + Project participation record list
             + Position took place (list by time)
+            + Role in system
 II. Organizational structure management
     1. Features
         - Add/edit/remove department info
@@ -285,5 +286,23 @@ VII. Community services
             + Social account
             + CV link
 
-Additional data table
-- 
+VIII.   Administration features
+    1. Features
+        - Add/Edit/Remove system role
+        - View system role
+        - Add/Edit/Remove permissions
+        - Assign permission to role
+        - Enroll account to a role
+    2. Users
+        - System admin: Full authority
+        - Others: Note
+    3. Data
+        - Role
+            + Role ID
+            + Role name
+            + Role description
+            + List of permission
+        - Permission
+            + Permission ID
+            + Permission name
+            + Permission description
