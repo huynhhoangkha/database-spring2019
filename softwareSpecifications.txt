@@ -219,10 +219,45 @@ VII. Community services
         - Create member recruitment form
             + Data will be sent to the server to create interview schedule automatically
         - Automatically create interview schedule system
-        - Black list
+        - Black list: // describe
     2. Users:
         - Admin users only
     3. Data:
         - Training class
-            +
-        - 
+            + ID
+            + Name
+            + Subject
+            + Teacher
+            + T.A
+            + Time
+            + Place
+            + Cost
+        - Seminar/Workshop
+            + ID
+            + Name
+            + Speaker
+            + Time
+                -- Begin time
+                -- End time
+            + Place
+        - Scientific articles
+            + ID
+            + Name
+            + Author
+            + Content
+        - Member recruitment form
+            + Name
+                -- First name
+                -- Middle name
+                -- Last name
+            + Date of birth
+            + Research field
+            + Favorite
+            + More description
+        - Automatically create interview schedule system:
+            + ID
+            + Data from member recruitment form
+            + Time of the interview
+            + Place
+        - Black list
+            + 
