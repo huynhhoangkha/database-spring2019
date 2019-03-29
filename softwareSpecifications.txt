@@ -163,7 +163,7 @@ V. Infrastructures management
 VI. Local user services
     1. Features:
         - Duty register system
-            + Create/Remove a duty
+            + Create/Remove/Edit a duty
                 -- Daily
                 -- Weekly
                 -- Monthly
@@ -175,13 +175,6 @@ VI. Local user services
             + Move to an available shift
         - Internal event
             + Create/Remove an internal event
-                -- Name
-                    ++ Party
-                    ++ Travelling
-                    ++ Team building
-                    ++ Camping
-                -- Time
-                -- Cost
             + View event
             + Join/Out event
             + Note
@@ -208,6 +201,10 @@ VI. Local user services
         - An event
             + ID
             + Name
+                -- Party
+                -- Travelling
+                -- Team building
+                -- Camping
             + Time
                 -- Begin Time
                 -- End time
@@ -216,29 +213,14 @@ VI. Local user services
             + Participants
 VII. Community services
     1. Features:
-        - Hold a training class:
-            + Computer
-            + Mechanical
-            + Electrical
-            + Soft skill
-        - Hold a seminar/workshop
-        - Post scientific articles
-        - Create member recruitment form
-            + Data will be sent to the server to create interview schedule automatically
-        - Automatically create interview schedule system
-        - Black list: // describe
+        - Create/Edit/Remove event (workshop/seminar/interview)
+        - Register event
+        - Create interview schedule
+        - Manage applicants
     2. Users:
-        - Admin users only
+        - Admin users: Create/Edit/Remove event
+        - Guess: Register event
     3. Data:
-        - Training class
-            + ID
-            + Name
-            + Subject
-            + Teacher
-            + T.A
-            + Time
-            + Place
-            + Cost
         - Seminar/Workshop
             + ID
             + Name
@@ -247,24 +229,18 @@ VII. Community services
                 -- Begin time
                 -- End time
             + Place
-        - Scientific articles
-            + ID
-            + Name
-            + Author
-            + Content
-        - Member recruitment form
+        - Application form
             + Name
                 -- First name
                 -- Middle name
                 -- Last name
             + Date of birth
+            + Gender (Sex)
             + Research field
-            + Favorite
-            + More description
-        - Automatically create interview schedule system:
-            + ID
-            + Data from member recruitment form
-            + Time of the interview
-            + Place
-        - Black list
-            + 
+            + Favorite (option)
+            + More description (option)
+            + Email
+            + Phone number
+            + Contact address
+            + Social account
+            + CV link
