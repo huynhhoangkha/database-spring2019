@@ -33,7 +33,7 @@ I. Employee profile management
                     ++ Date of issue
                     ++ Date of expiry
                     ++ Place of issue
-            + Local identidication
+            + Local identification
                 -- TickLab ID card (many, in the case of reissuance)
                     ++ RFID number
                     ++ Date of issue
