@@ -1,4 +1,4 @@
-TICKLAB INFORMATION SYSTEM Specifications
+ TICKLAB INFORMATION SYSTEM Specifications
 
 I. Employee profile management
     1. Features:
@@ -91,9 +91,6 @@ III. Finance management
             + Add expenditure categories
             + Edit expenditure categories
             + View expenditure categories
-            + Add/remove/edit employee
-                -- Add/remove/edit by person
-                -- Add/remove/edit by list
             + Add/remove employee
             + Add/remove records
             + Print receipt
@@ -239,6 +236,7 @@ VI. Local user services
                 -- Year 
             + Number of shift
             + Members are on duty
+            + Descriptions
         - An event
             + ID
             + Name
