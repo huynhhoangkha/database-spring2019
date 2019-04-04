@@ -1,15 +1,39 @@
 I. Entities:
-	1. Entity name
-		- Entity attribute 1
-		- Entity attribute 2 (derived)
-		- Entity composite attribute
-			+ Child attribute 1 (key)
-			+ Child attribute 2
-				-- Child of child 1
-				-- Child of child 2 
-				-- Child of child 3 (optional)
-		- Entity attribute 3 (multivalue)
-	...
+	1. Person
+		- Profile number (key)
+		- Legal identification
+			+ Nationality
+			+ Fullname
+				-- First-name
+				-- Middle-name
+				-- Last-name
+			+ Birthday
+			+ Gender
+			+ Permanent address
+			+ National ID information
+				-- ID number (key)
+				-- Date of issue
+				-- Place of issue
+			+ Passport (optional)
+				-- Passport number
+				-- Date of issue
+				-- Date of expiry
+				-- Place of issue
+		- TickLab ID card (multivalue)
+			+ RFID number
+			+ Date of issue
+		- Contact infomation
+			+ Phone number (multivalue)
+			+ Contact address (multivalue)
+			+ Email address (multivatlue)
+		- Other infomation
+			+ Profile photo url
+			+ Related documents url (multivalue)
+		- System login account
+			+ Username
+			+ Password
+			+ System role (multivalue)
+	
 II. Relationships:
 	1. Relationship name
 		- Relationship attribute 1
