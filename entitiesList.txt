@@ -28,12 +28,22 @@ I. Entities:
 			+ Email address (multivatlue)
 		- Other infomation
 			+ Profile photo url
-			+ Related documents url (multivalue)
+			+ Related document urls (multivalue)
 		- System login account
 			+ Username
 			+ Password
 			+ System role (multivalue)
-	
+	2. Project
+		- ID (key)
+		- Name
+		- Description
+		- Start time
+		- End time
+		- Expected finish time
+		- Status
+		- Fund (derived)
+		- TickLab's budget
+		- Related document urls (multivalue)
 II. Relationships:
 	1. Relationship name
 		- Relationship attribute 1
