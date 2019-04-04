@@ -141,6 +141,8 @@ IV. Projects management
             + Project owner (department)
             + Project Manager (employee)
             + Start time
+            + Expected finish time
+            + Status (in progress/ finished/ cancelled/ postponed)
             + End time
             + Participants (list of employees who participate in the project)
             + Timeline (list of timeline note)
