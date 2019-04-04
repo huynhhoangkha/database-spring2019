@@ -158,10 +158,12 @@ IV. Projects management
                 -- Begin time
                 -- Task log
                 -- Task status
-            + Project fund: List of contributions:
-                -- Origin of contribution (From who: TickLab's budget/ partner company/ person...)
-                -- Amount of money
-                -- Date of contribution
+            + Project fund:
+                -- TickLab's budget
+                -- List of contributions:
+                    Origin of contribution (partner company/ partner person...)
+                    Amount of money
+                    Date of contribution
             + Related document links (a list of urls);
         - Project participation records
             + Employee (who)
