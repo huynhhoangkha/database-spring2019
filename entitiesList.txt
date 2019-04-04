@@ -44,6 +44,15 @@ I. Entities:
 		- Fund (derived)
 		- TickLab's budget
 		- Related document urls (multivalue)
+	3. Department
+		- ID (key)
+		- Name
+		- Description
+	4. Position
+		- ID (key)
+		- Name
+		- Description
+	
 II. Relationships:
 	1. Relationship name
 		- Relationship attribute 1
