@@ -41,7 +41,7 @@ I. Employee profile management
                 -- Contact address (many): Mark some address as recently used
                 -- Email address (many): Mark some email addr as recently used
             + Other information
-                -- Portfolio link
+                -- Profile photo url
                 -- Related documents links (many)
             + System login information
                 -- username;
