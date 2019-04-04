@@ -1,0 +1,24 @@
+I. Entities:
+	1. Entity name
+		- Entity attribute 1
+		- Entity attribute 2 (derived)
+		- Entity composite attribute
+			+ Child attribute 1 (key)
+			+ Child attribute 2
+				-- Child of child 1
+				-- Child of child 2 
+				-- Child of child 3 (optional)
+		- Entity attribute 3 (multivalue)
+	...
+II. Relationships:
+	1. Relationship name
+		- Relationship attribute 1
+		- Relationship attribute 2 (derived)
+		- Relationship composite attribute
+			+ Child attribute 1 (key)
+			+ Child attribute 2
+				-- Child of child 1
+				-- Child of child 2 
+				-- Child of child 3 (optional)
+		- Relationship attribute 3 (multivalue)
+	...
