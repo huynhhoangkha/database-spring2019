@@ -14,7 +14,7 @@ I. Employee profile management
         - Others users: View and request changes, the changes must be accepted
             by the System Admin
     3. Data:
-        - Users profile:
+        - Person:
             + Profile number
             + Legal identification
                 -- Nationality
@@ -23,6 +23,7 @@ I. Employee profile management
                     ++ Middle-name
                     ++ Last-name
                 -- Birthday
+                -- Gender
                 -- Permanent address
                 -- National ID information
                     ++ ID number
