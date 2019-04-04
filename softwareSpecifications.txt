@@ -33,10 +33,9 @@ I. Employee profile management
                     ++ Date of issue
                     ++ Date of expiry
                     ++ Place of issue
-            + Local identification
-                -- TickLab ID card (many, in the case of reissuance)
-                    ++ RFID number
-                    ++ Date of issue
+            + Local identification: TickLab ID card (many, in the case of reissuance)
+                -- RFID number
+                -- Date of issue
             + Contact information
                 -- Phone number (many): Mark some phone number as recently used
                 -- Contact address (many): Mark some address as recently used
