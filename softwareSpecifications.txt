@@ -43,13 +43,12 @@ I. Employee profile management
             + Other information
                 -- Profile photo url
                 -- Related documents links (many)
-            + System login information
+            + System login account
                 -- username;
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be described later)
             + Project participation record list
             + Position took place (list by time)
-            + Role in system
 II. Organizational structure management
     1. Features
         - Add/edit/remove department info
