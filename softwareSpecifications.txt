@@ -16,7 +16,7 @@ I. Employee profile management
     3. Data:
         - Users profile:
             + Profile number
-            + Legal identidication
+            + Legal identification
                 -- Nationality
                 -- Fullname
                     ++ First-name
