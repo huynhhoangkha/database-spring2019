@@ -6,7 +6,7 @@
 # Phase 1: software specification
 - File: **softwareSpecifications.txt**
     - **_Kha_**: I, II, VI, VII
-    - **_Soi_**: III, IV, V, VIII
+    - **_Dat_**: III, IV, V, VIII
 # Phase 2: create a list of entity and relationship
 - File: **entitiesList.txt**
 	- **_Phong_**: read the specification and make a list of entities/relationship
@@ -53,10 +53,10 @@ II. Relationships:
 - Infrastructure management OK
 - Community activity OK
 # Phase 3: draw the ERD
-- File at:
+- File at (Kha, Dat):
 	> [Draw.IO ERD File](https://drive.google.com/file/d/1AwPx2zChkeIr8TM1oYwxKztD8FemDQsj/view)
 **_Done!_**
 
 # Phase 4: mapping
-- File at:
+- File at (Dat):
 	> [Draw.IO Mapping File](https://drive.google.com/file/d/1TKHB5bIFGBcwnpDZCCxpE8Vr54ypd_19/view)
