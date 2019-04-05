@@ -105,6 +105,7 @@ I. Entities:
 		- Borrow date
 		- Status (derived)
 	13. Comunity activity
+		- Place
 	14. Seminar workshop
 		- Topic
 	15. Interview
