@@ -52,9 +52,80 @@ I. Entities:
 		- ID (key)
 		- Name
 		- Description
-	
+	5. Task
+		- ID (key)
+		- Status
+		- Description
+		- Remark (multivalue)
+		- From time
+		- To time
+		- What to do
+	6. Company
+		- Tax ID number (key)
+		- Name
+		- Description
+		- Related document urls (multivalue)
+	7. Infrastuctures
+		- ID (key)
+		- Name
+		- Description
+		- Total number of items
+		- Number of available (derived)
+	8. Event
+		- ID (key)
+		- Name
+		- Begin time
+		- End time
+		- Place (multivalue)
+		- Participant (multivalue)
+		- Cost
+	9. Duty
+		- ID (key)
+		- Name
+		- Description
+		- Employee (multivalue)
+		- Shift (multivalue)
+	10. Revenue category
+		- ID (key)
+		- Name
+		- Description
+		- Employee
+		- Amount of money
+			+ Paid
+			+ Have to pay
+			+ Rest (derived)
+	11. Expenditure category
+		- ID (key)
+		- Name
+		- Description
+		- Amount of money
+		- Time
+	12. Borrowing record
+		- ID (key)
+		- Borrow date
+		- Status (derived)
 II. Relationships:
-	1. Relationship name
+	1. Manage
+	2. Participate
+		- From date
+		- To date
+		- Score (derived)
+	3. Contribute
+		- Amount of money
+		- Date
+	4. Belong to
+	5. In
+	6. Take
+		- From date
+		- To date
+	7. Include
+		- Borrow ID (key)
+		- Number of items
+		- Due date
+		- Return date
+		
+		
+		
 		- Relationship attribute 1
 		- Relationship attribute 2 (derived)
 		- Relationship composite attribute
