@@ -14,15 +14,16 @@ I. Employee profile management
         - Others users: View and request changes, the changes must be accepted
             by the System Admin
     3. Data:
-        - Users profile:
+        - Person:
             + Profile number
-            + Legal identidication
+            + Legal identification
                 -- Nationality
                 -- Fullname
                     ++ First-name
                     ++ Middle-name
                     ++ Last-name
                 -- Birthday
+                -- Gender
                 -- Permanent address
                 -- National ID information
                     ++ ID number
@@ -33,24 +34,22 @@ I. Employee profile management
                     ++ Date of issue
                     ++ Date of expiry
                     ++ Place of issue
-            + Local identification
-                -- TickLab ID card (many, in the case of reissuance)
-                    ++ RFID number
-                    ++ Date of issue
+            + Local identification: TickLab ID card (many, in the case of reissuance)
+                -- RFID number
+                -- Date of issue
             + Contact information
                 -- Phone number (many): Mark some phone number as recently used
                 -- Contact address (many): Mark some address as recently used
                 -- Email address (many): Mark some email addr as recently used
             + Other information
-                -- Portfolio link
+                -- Profile photo url
                 -- Related documents links (many)
-            + System login information
+            + System login account
                 -- username;
                 -- password;
                 -- System role: System admin/ Director/ Manager... (would be described later)
             + Project participation record list
             + Position took place (list by time)
-            + Role in system
 II. Organizational structure management
     1. Features
         - Add/edit/remove department info
@@ -141,6 +140,8 @@ IV. Projects management
             + Project owner (department)
             + Project Manager (employee)
             + Start time
+            + Expected finish time
+            + Status (in progress/ finished/ cancelled/ postponed)
             + End time
             + Participants (list of employees who participate in the project)
             + Timeline (list of timeline note)
@@ -153,16 +154,22 @@ IV. Projects management
                 -- Employee list (one or many)
                 -- Task description
                 -- Begin time
-                -- Task log
+                -- Task remark
                 -- Task status
-            + Project fund
+            + Project fund:
+                -- TickLab's budget
+                -- List of contributions:
+                    Origin of contribution (partner company/ partner person...)
+                    Amount of money
+                    Date of contribution
+            + Related document links (a list of urls);
         - Project participation records
             + Employee (who)
             + Project
             + Start time
             + Endtime
             + TaskList
-            + Performance rate
+            + Score
 V. Infrastructures management
     1. Features:
         - View list of infrastructures
