@@ -19,10 +19,10 @@ I. Employee profile management
             + Legal identification
                 -- Nationality
                 -- Fullname
-                    ++ First-name
-                    ++ Middle-name
-                    ++ Last-name
-                -- Birthday
+                    ++ First name
+                    ++ Middle name
+                    ++ Last name
+                -- Date of birth
                 -- Gender
                 -- Permanent address
                 -- National ID information
@@ -280,7 +280,7 @@ VII. Community services
                 -- Middle name 
                 -- Last name
             + Date of birth
-            + Gender (Sex)
+            + Gender
             + Research field
             + Favorite (option)
             + More description (option)
