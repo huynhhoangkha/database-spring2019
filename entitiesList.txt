@@ -4,9 +4,9 @@ I. Entities:
 		- Legal identification
 			+ Nationality
 			+ Fullname
-				-- First-name
-				-- Middle-name
-				-- Last-name
+				-- First name
+				-- Middle name
+				-- Last name
 			+ Birthday
 			+ Gender
 			+ Permanent address
