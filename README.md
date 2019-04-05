@@ -48,5 +48,5 @@ II. Relationships:
 **_Done!_**
 
 # Phase 4: mapping
-- Use the same file at 
-	> [Draw.IO ERD File](https://drive.google.com/file/d/1AwPx2zChkeIr8TM1oYwxKztD8FemDQsj/view)
+- File at:
+	> [Draw.IO Mapping File](https://drive.google.com/file/d/1TKHB5bIFGBcwnpDZCCxpE8Vr54ypd_19/view)
