@@ -34,6 +34,12 @@ II. Relationships:
 				-- Child of child 2 
 				-- Child of child 3 (optional)
 		- Relationship attribute 3 (multivalue)
+		- Entity 1:
+			+ Mandatory (yes/no)
+			+ cardinality: (1 or N...)
+		- Entity 2:
+			+ Mandatory (yes/no)
+			+ cardinality: (1 or M...)
 	...
 ```
 
