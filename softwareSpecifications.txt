@@ -156,7 +156,7 @@ IV. Projects management
                 -- Employee list (one or many)
                 -- Task description
                 -- Begin time
-                -- Task log
+                -- Task remark
                 -- Task status
             + Project fund:
                 -- TickLab's budget
@@ -171,7 +171,7 @@ IV. Projects management
             + Start time
             + Endtime
             + TaskList
-            + Performance rate
+            + Score
 V. Infrastructures management
     1. Features:
         - View list of infrastructures
