@@ -91,7 +91,6 @@ III. Finance management
             + Add expenditure categories
             + Edit expenditure categories
             + View expenditure categories
-            + Add/remove employee
             + Add/remove records
             + Print receipt
     2. Users:
@@ -110,10 +109,9 @@ III. Finance management
             + Status
             + Descriptions
         - Expenditure categories:
-            + Employee (many)
+            + ID
+            + Name
             + Amount of money
-            + Rest
-            + Status
             + Descriptions
         - Revenue/expenditure records
             + Employee
@@ -175,7 +173,7 @@ V. Infrastructures management
             + Accept borrow request
         - Return infrastructures
             + Confirm the borrower has returned
-        - Add/Remove/Edit infrastructures        
+        - Add/Remove/Edit infrastructures
     2. Users:
         - Admin users:
             + Add/Remove/Edit infrastructures
@@ -264,6 +262,7 @@ VII. Community services
             + ID
             + Name
             + Speaker
+            + Subject
             + Time
                 -- Begin time
                 -- End time
