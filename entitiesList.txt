@@ -104,6 +104,24 @@ I. Entities:
 		- ID (key)
 		- Borrow date
 		- Status (derived)
+	13. Comunity activity
+	14. Seminar workshop
+		- Topic
+	15. Interview
+		- Requirement
+	16. Application form
+		- Form ID (partial key)
+		- Full name
+			+ First name
+			+ Middle name
+			+ Last name
+		- Gender
+		- Date of birth
+		- Phone number
+		- CV url
+		- Email
+		- Social account
+		- Contact address
 II. Relationships:
 	1. Manage
 	2. Participate
@@ -123,16 +141,5 @@ II. Relationships:
 		- Number of items
 		- Due date
 		- Return date
-		
-		
-		
-		- Relationship attribute 1
-		- Relationship attribute 2 (derived)
-		- Relationship composite attribute
-			+ Child attribute 1 (key)
-			+ Child attribute 2
-				-- Child of child 1
-				-- Child of child 2 
-				-- Child of child 3 (optional)
-		- Relationship attribute 3 (multivalue)
-	...
+	8. Has
+	9. Form of (identifying)
