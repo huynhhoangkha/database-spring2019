@@ -79,11 +79,10 @@ I. Entities:
 		- Place (multivalue)
 		- Participant (multivalue)
 		- Cost
-	9. Duty
+	9. Daily duty
 		- ID (key)
 		- Name
 		- Description
-		- Employee (multivalue)
 		- Shift (multivalue)
 	10. Revenue category
 		- ID (key)
@@ -94,6 +93,7 @@ I. Entities:
 			+ Paid
 			+ Have to pay
 			+ Rest (derived)
+		- Deadline
 	11. Expenditure category
 		- ID (key)
 		- Name
@@ -122,24 +122,139 @@ I. Entities:
 		- Email
 		- Social account
 		- Contact address
+	17. Fund
+		- ID (key)
+		- Current budget
+		- Original capital
 II. Relationships:
-	1. Manage
-	2. Participate
-		- From date
-		- To date
-		- Score (derived)
-	3. Contribute
-		- Amount of money
-		- Date
-	4. Belong to
-	5. In
-	6. Take
-		- From date
-		- To date
-	7. Include
-		- Borrow ID (key)
-		- Number of items
-		- Due date
-		- Return date
-	8. Has
-	9. Form of (identifying)
+	1. Manage project
+		- Entity:
+			+ Person
+				-- Mandatory: no
+				-- Cardinality: 1
+			+ Project
+				-- Mandatory: yes
+				-- Cardinality: N
+	2. Manage fund
+		- Entity:
+			+ Person
+				-- Mandatory: no
+				-- Cardinality: 1
+			+ Fund
+				-- Mandatory: yes
+				-- Cardinality: 1
+	3. Participate
+		- Relationship attribute:
+			+ From date
+			+ To date
+			+ Score (derived)
+		- Entity:
+			+ Person
+				-- Mandatory: no
+				-- Cardinality: N
+			+ Project
+				-- Mandatory: yes
+				-- Cardinality: 1
+			+ Task
+				-- Mandatory: yes
+				-- Cardinality: M
+	4. Contribute
+		- Relationship attribute:
+			+ Amount of money
+			+ Date
+		- Entity:
+			+ Project fund contributor:
+				-- Mandatory: no
+				-- Cardinality: N
+			+ Project:
+				-- Mandatory: no
+				-- Cardinality: M
+	5. Belong to
+		- Entity:
+			+ Project
+				-- Mandatory: yes
+				-- Cardinality: N
+			+ Department
+				-- Mandatory: no
+				-- Cardinality: 1
+	6. In
+		- Entity:
+			+ Department
+				-- Mandatory: yes
+				-- Cardinality: 1
+			+ Position
+				-- Mandatory: yes
+				-- Cardinality: N
+	7. Take
+		- Relationship attribute:
+			+ From date
+			+ To date
+		- Entity:
+			+ Person
+				-- Mandatory: yes
+				-- Cardinality: N
+			+ Position
+				-- Mandatory: no
+				-- Cardinality: M
+	8. Have to pay
+		- Entity:
+			+ Person
+				-- Mandatory: no
+				-- Cardinality: N
+			+ Revenue category
+				-- Mandatory: yes
+				-- Cardinality: M
+	9. Has
+		- Entity:
+			+ Person
+				-- Mandatory: no
+				-- Cardinality: 1
+			+ Borrowing record
+				-- Mandatory: yes
+				-- Cardinality: N
+	
+	10. Include
+		- Relationship attribute:
+			+ Borrow ID (key)
+			+ Number of items
+			+ Due date
+			+ Return date
+		- Entity:
+			+ Infrastructure
+				-- Mandatory: no
+				-- Cardinality: M
+			+ Borrowing record
+				-- Mandatory: yes
+				-- Cardinality: N
+	11. Income to
+		- Entity:
+			+ Revenue category
+				-- Mandatory: yes
+				-- Cardinality: N
+			+ Fund
+				-- Mandatory: no
+				-- Cardinality: 1
+	12. Spend to
+		- Entity:
+			+ Fund
+				-- Mandatory: no
+				-- Cardinality: 1
+			+ Expenditure category
+				-- Mandatory: yes
+				-- Cardinality: N
+	13. Form of (identifying)
+		- Entity:
+			+ Community activity
+				-- Mandatory: no
+				-- Cardinality: 1
+			+ Application form (weak)
+				-- Mandatory: yes
+				-- Cardinality: N
+	14. Has to do
+		- Entity:
+			+ Person
+				-- Mandatory: no
+				-- Cardinality: N
+			+ Borrowing record
+				-- Mandatory: yes
+				-- Cardinality: M
