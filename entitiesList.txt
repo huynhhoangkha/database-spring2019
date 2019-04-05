@@ -209,7 +209,6 @@ II. Relationships:
 	
 	10. Include
 		- Relationship attribute:
-			+ Borrow ID (key)
 			+ Number of items
 			+ Due date
 			+ Return date
