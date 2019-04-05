@@ -1,9 +1,8 @@
 # database-spring2019
 **_Diagrams are drawn with draw.io and saved in Google Drive at links bellow_**
-```
-[Draw.IO ERD File](https://drive.google.com/file/d/1AwPx2zChkeIr8TM1oYwxKztD8FemDQsj/view)
-[Draw.IO Mapping File](https://drive.google.com/file/d/1TKHB5bIFGBcwnpDZCCxpE8Vr54ypd_19/view)
-```
+	> [Draw.IO ERD File](https://drive.google.com/file/d/1AwPx2zChkeIr8TM1oYwxKztD8FemDQsj/view)
+	> [Draw.IO Mapping File](https://drive.google.com/file/d/1TKHB5bIFGBcwnpDZCCxpE8Vr54ypd_19/view)
+
 # Phase 1: software specification
 - File: **softwareSpecifications.txt**
     - **_Kha_**: I, II, VI, VII
