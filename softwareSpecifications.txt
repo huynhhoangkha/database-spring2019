@@ -62,14 +62,15 @@ II. Organizational structure management
         - Other user: View department info
     3. Data
         - Department information
-            + Department ID
-            + Department name
-            + Department descriptions
+            + ID
+            + Name
+            + Description
             + Department human resouce (list of position)
             + Department projects (list of projects by time)
         - Position:
-            + Position name
-            + Position descriptions
+            + ID
+            + Name
+            + Descriptions
             + Employee
             + Start Date
             + Stop date
@@ -102,22 +103,26 @@ III. Finance management
     3. Data:
         - Revenue category:
             + Employee (many)
+	    + ID
+	    + Name
             + Amount of money
+	    	-- Rest
+		-- Paid
+		-- Have to pay
             + Deadline
-            + Rest
             + Status
-            + Descriptions
+            + Description
         - Expenditure categories:
             + ID
             + Name
             + Amount of money
-            + Descriptions
-        - Revenue/expenditure records
+            + Description
+	    + Date
+        - Fund
             + Employee
-            + Kind of record (Revenue or Expenditure?)
-            + Amount of money
-            + Date
-            + Accountant
+            + ID
+            + Current budget
+            + Original capital
 IV. Projects management
     1. Features:
         - Create/Edit/Remove project
@@ -134,8 +139,8 @@ IV. Projects management
         - Other user: View
     3. Data:
         - Project
-            + Project ID
-            + Project name
+            + ID
+            + Name
             + Descriptions
             + Project owner (department)
             + Project Manager (employee)
@@ -149,19 +154,19 @@ IV. Projects management
                 -- ToTime
                 -- What to do
                 -- Status (Have not started, in progress, or finished)
-            + List of tasks
-                -- Task ID
+            + Task
+                -- ID
                 -- Employee list (one or many)
-                -- Task description
+                -- Description
                 -- Begin time
-                -- Task remark
-                -- Task status
+                -- Remark
+                -- Status
             + Project fund:
                 -- TickLab's budget
                 -- List of contributions:
-                    Origin of contribution (partner company/ partner person...)
-                    Amount of money
-                    Date of contribution
+                    ++ Origin of contribution (partner company/ partner person...)
+                    ++ Amount of money
+                    ++ Date of contribution
             + Related document links (a list of urls);
         - Project participation records
             + Employee (who)
@@ -197,11 +202,11 @@ V. Infrastructures management
             + Total number of items
             + Number of available
             + Descriptions
-        - Borrow/Return record
-            + Employee
+        - Borrow record
+	    + Employee
+            + ID
             + Item
-            + Number of item
-            + Record type (Borrow or return)
+            + Status
             + Date
 VI. Local user services
     1. Features:
@@ -230,31 +235,11 @@ VI. Local user services
             + Swap shift with another user
             + Move to an available shift
     3. Data:
-        - A duty
+        - Daily duty
             + ID
             + Name
-            + Time
-                -- Shift
-                -- Day
-                -- Week
-                -- Month
-                -- Year 
-            + Number of shift
-            + Members are on duty
+            + Shift
             + Descriptions
-        - An event
-            + ID
-            + Name
-                -- Party
-                -- Travelling
-                -- Team building
-                -- Camping
-            + Time
-                -- Begin Time
-                -- End time
-            + Place
-            + Cost
-            + Participants
 VII. Community services
     1. Features:
         - Create/Edit/Remove event (workshop/seminar/interview)
@@ -275,15 +260,13 @@ VII. Community services
                 -- End time
             + Place
         - Application form
+	    + Form ID
             + Name
                 -- First name
                 -- Middle name 
                 -- Last name
             + Date of birth
             + Gender
-            + Research field
-            + Favorite (option)
-            + More description (option)
             + Email
             + Phone number
             + Contact address
