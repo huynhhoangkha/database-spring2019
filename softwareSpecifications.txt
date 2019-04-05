@@ -289,24 +289,3 @@ VII. Community services
             + Contact address
             + Social account
             + CV link
-
-VIII.   Administration features
-    1. Features
-        - Add/Edit/Remove system role
-        - View system role
-        - Add/Edit/Remove permissions
-        - Assign permission to role
-        - Enroll account to a role
-    2. Users
-        - System admin: Full authority
-        - Others: Note
-    3. Data
-        - Role
-            + Role ID
-            + Role name
-            + Role description
-            + List of permission
-        - Permission
-            + Permission ID
-            + Permission name
-            + Permission description
