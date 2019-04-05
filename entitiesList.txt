@@ -71,14 +71,7 @@ I. Entities:
 		- Description
 		- Total number of items
 		- Number of available (derived)
-	8. Event
-		- ID (key)
-		- Name
-		- Begin time
-		- End time
-		- Place (multivalue)
-		- Participant (multivalue)
-		- Cost
+	8. Project fund contributor
 	9. Daily duty
 		- ID (key)
 		- Name
