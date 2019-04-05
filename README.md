@@ -45,3 +45,8 @@ II. Relationships:
 # Phase 3: draw the ERD
 - File at:
 	> [Draw.IO ERD File](https://drive.google.com/file/d/1AwPx2zChkeIr8TM1oYwxKztD8FemDQsj/view)
+**_Done!_**
+
+# Phase 4: mapping
+- Use the same file at 
+	> [Draw.IO ERD File](https://drive.google.com/file/d/1AwPx2zChkeIr8TM1oYwxKztD8FemDQsj/view)
