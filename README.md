@@ -60,3 +60,8 @@ II. Relationships:
 # Phase 4: mapping
 - File at (Dat):
 	> [Draw.IO Mapping File](https://drive.google.com/file/d/1TKHB5bIFGBcwnpDZCCxpE8Vr54ypd_19/view)
+
+# Phase 5: creating database using SQL statements
+- File: MySQL.sql
+	**Kha:** Write the SQL code
+	**Dat:** Verify the code using SQL Server Management Studio (SSMS)
