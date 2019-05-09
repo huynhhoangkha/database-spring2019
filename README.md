@@ -63,5 +63,5 @@ II. Relationships:
 
 # Phase 5: creating database using SQL statements
 - File: MySQL.sql
-	**Kha:** Write the SQL code
+	**Kha:** Write the SQL code < /br>
 	**Dat:** Verify the code using SQL Server Management Studio (SSMS)
