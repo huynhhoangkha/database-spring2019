@@ -61,7 +61,7 @@ CREATE DATABASE TickLabInfoSystem;
     -- Person phone number
     CREATE TABLE PersonPhoneNumber (
         profileNumber INT NOT NULL,
-        phoneNumber TEXT NOT NULL,
+        phoneNumber VARCHAR(11) NOT NULL,
         PRIMARY KEY(profileNumber, phoneNumber),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
@@ -75,8 +75,8 @@ CREATE DATABASE TickLabInfoSystem;
     );
     -- Project
     CREATE TABLE Project (
+        projectID INT NOT NULL,
         projectName TEXT,
-        projectID VARCHAR(10) NOT NULL,
         projectStartTime DATE,
         projectEndTime DATE,
         projectStatus TEXT,
@@ -95,6 +95,37 @@ CREATE DATABASE TickLabInfoSystem;
         projectDocumentURL TEXT NOT NULL,
         PRIMARY KEY(projectID, projectDocumentURL),
         FOREIGN KEY(projectID) REFERENCES Project(projectID) 
+    );
+    -- Seminar workshop
+    CREATE TABLE SeminarWorkshop (
+        projectID INT,
+        topic TEXT,
+        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+    );
+    -- Interview
+    CREATE TABLE Interview (
+        projectID INT,
+        requirement TEXT,
+        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+    );
+    -- Community activity
+    CREATE TABLE CommunityActivity (
+        projectID INT,
+        place TEXT,
+        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+    );
+        -- Application form
+    CREATE TABLE ApplicationForm (
+        projectIDForm INT,
+        formID INT,
+        formFirstName TEXT,
+        formMiddleName TEXT,
+        formLastName TEXT,
+        formGender BIT,
+        formDateOfBirth DATE,
+        formPhoneNumber VARCHAR(11),
+        formContactAddress TEXT,
+        formSocialAccount TEXT,
     );
     -- Company
     CREATE TABLE Company (
@@ -167,14 +198,6 @@ CREATE DATABASE TickLabInfoSystem;
         PRIMARY KEY(dutyID, shift),
         FOREIGN KEY(dutyID) REFERENCES DailyDuty(dutyID)
     )
-    -- Application form
-    CREATE TABLE ApplicationForm ();
-    -- Seminar workshop
-    CREATE TABLE SeminarWorkshop ();
-    -- Interview
-    CREATE TABLE Interview ();
-    -- Community activity
-    CREATE TABLE CommunityActivity ();
     -- Infrastructures
     CREATE TABLE Infrastructure (
         infraID INT,
@@ -193,7 +216,7 @@ CREATE DATABASE TickLabInfoSystem;
         borrower INT,
         PRIMARY KEY(borrowID),
         FOREIGN KEY(borrower) REFERENCES Person(profileNumber)
-    )
+    );
     -- Include
     CREATE TABLE Including (
         borrowIDInclude INT,
@@ -204,7 +227,7 @@ CREATE DATABASE TickLabInfoSystem;
         PRIMARY KEY(borrowIDInclude, infraIDInclude),
         FOREIGN KEY(borrowIDInclude) REFERENCES BorrowRecord(borrowID),
         FOREIGN KEY(infraIDInclude) REFERENCES Infrastructure(infraID)
-    )
+    );
     -- Fund
     CREATE TABLE Fund (
         fundID INT,
