@@ -137,7 +137,8 @@ USE TickLabInfoSystem;
         projectID INT,
         requirement TEXT,
         communityID INT,
-        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+        FOREIGN KEY(projectID) REFERENCES Project(projectID),
+        FOREIGN KEY(communityID) REFERENCES CommunityActivity(communityID)
     );
     -- Application form
     CREATE TABLE ApplicationForm (
