@@ -26,7 +26,7 @@ CREATE DATABASE TickLabInfoSystem;
     CREATE TABLE TickLabIDCard (
         profileNumber INT NOT NULL,
         dateOfIssue DATE NOT NULL,
-        rfidNumber INT NOT NULL,
+        rfidNumber VARCHAR(9) NOT NULL,
         PRIMARY KEY(profileNumber, dateOfIssuem, rfidNumber),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
@@ -114,7 +114,7 @@ CREATE DATABASE TickLabInfoSystem;
         place TEXT,
         FOREIGN KEY(projectID) REFERENCES Project(projectID)
     );
-        -- Application form
+    -- Application form
     CREATE TABLE ApplicationForm (
         projectIDForm INT,
         formID INT,
@@ -126,6 +126,14 @@ CREATE DATABASE TickLabInfoSystem;
         formPhoneNumber VARCHAR(11),
         formContactAddress TEXT,
         formSocialAccount TEXT,
+        formEmail TEXT,
+        formCVURL TEXT,
+        PRIMARY KEY(projectIDForm, formID),
+        FOREIGN KEY(projectIDForm) REFERENCES Project(projectID)
+    );
+    -- Form of
+    CREATE TABLE FormOf (
+
     );
     -- Company
     CREATE TABLE Company (
