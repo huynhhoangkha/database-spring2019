@@ -178,7 +178,9 @@ USE TickLabInfoSystem;
         posID INT NOT NULL,
         posName TEXT,
         posDescription TEXT,
-        PRIMARY KEY(posID)
+        posInDepartment INT,
+        PRIMARY KEY(posID),
+        FOREIGN KEY(posInDepartment) REFERENCES Department(departmentID)
     );
     -- Person take position
     CREATE TABLE Taking (
