@@ -187,7 +187,7 @@ USE TickLabInfoSystem;
         takeToDate DATE,
         PRIMARY KEY(profileNumberTake, posIDTake),
         FOREIGN KEY(profileNumberTake) REFERENCES Person(profileNumber),
-        FOREIGN KEY(posIDTake) REFERENCES WorkPosition(posID),
+        FOREIGN KEY(posIDTake) REFERENCES WorkPosition(posID)
     );
     -- Task
     CREATE TABLE Task (
@@ -215,19 +215,21 @@ USE TickLabInfoSystem;
         PRIMARY KEY(taskID, taskRemark),
         FOREIGN KEY(taskID) REFERENCES Task(taskID)
     );
-    -- Daily duty
-    CREATE TABLE DailyDuty (
+    -- Duty
+    CREATE TABLE Duty (
         dutyID INT NOT NULL,
         dutyName TEXT,
+        shift TEXT,
         dutyDescription TEXT,
         PRIMARY KEY(dutyID)
     );
-    -- Duty shift
-    CREATE TABLE DutyShift (
-        dutyID INT NOT NULL,
-        shift VARCHAR(11),
-        PRIMARY KEY(dutyID, shift),
-        FOREIGN KEY(dutyID) REFERENCES DailyDuty(dutyID)
+    -- Has to do duty
+    CREATE TABLE HaveToDoDuty (
+        profileNumberDuty INT,
+        dutyID INT,
+        PRIMARY KEY(profileNumberDuty, dutyID),
+        FOREIGN KEY(profileNumberDuty) REFERENCES Person(profileNumber),
+        FOREIGN KEY(dutyID) REFERENCES Duty(dutyID)
     );
     -- Infrastructures
     CREATE TABLE Infrastructure (
