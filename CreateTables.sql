@@ -100,12 +100,16 @@ CREATE DATABASE TickLabInfoSystem;
     );
     -- Project Fund Contributor
     CREATE TABLE ProjectFundContributor (
-        projectFundContributor INT,
+        projectFundContributor INT NOT NULL,
         PRIMARY KEY(projectFundContributor)
     );
     -- Contributing
     CREATE TABLE Contributing (
-        
+        projectFundContributor INT NOT NULL,
+        projectID INT NOT NULL,
+        contributingDate DATETIME,
+        amountOfMoney MONEY,
+        PRIMARY KEY(projectFundContributor, projectID)
     );
     -- Seminar workshop
     CREATE TABLE SeminarWorkshop (
