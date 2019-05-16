@@ -264,7 +264,17 @@ struct Person {
 };
 #pragma endregion PERSON
 #pragma region TickLabIDCard
-//Todo
+struct TickLabIDCard {
+    NullableInt profileNumber;
+    NullableDate dateOfIssue;
+    NullableString rfidNumber;
+    string sqlInsertCommand() {
+        return string("INSERT INTO TickLabIDCard VALUES(")
+        + profileNumber.sqlFormat() + string(", ")
+        + dateOfIssue.sqlFormat() +  string(", ")
+        + rfidNumber.sqlFormat() + string(");");
+    }
+};
 #pragma endregion TickLabIDCard
 #pragma endregion TABLE
 
@@ -276,9 +286,8 @@ int main() {
          * Section: generate Person table data
         */
         fs.open("InsertPerson.sql", ios::out);
-        if (fs.fail()) throw "Unable to open file InsertPerson.sql";
         vector<Person> personVect;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 30; i++) {
             Person temp;
             temp.profileNumber = i;
             temp.dateOfBirth = randomBirthDate();
@@ -297,7 +306,22 @@ int main() {
         /**
          * Section: generate TickLab ID Card table data
         */
-        
+        fs.open("InsertTickLabIDCard.sql", ios::out);
+        int numberOfPerson = personVect.size();
+        int temp;
+        vector<TickLabIDCard> ticklabIDCardVect;
+        for (int i = 0; i < numberOfPerson; i++) {
+            temp = rand() % 2 + 1;
+            for (int j = 0; j < temp; j++) {
+                TickLabIDCard card;
+                card.profileNumber = personVect[i].profileNumber;
+                card.rfidNumber = randomNationIDNumber();
+                card.dateOfIssue = randomDateOfIssue(personVect[i].dateOfBirth, 18 + rand() % 5);
+                ticklabIDCardVect.push_back(card);
+                fs << card.sqlInsertCommand() << endl;
+            }
+        }
+        fs.close();
     }
     catch (const char* msg) {
         cerr << "--------------ERROR-------------" << endl;
