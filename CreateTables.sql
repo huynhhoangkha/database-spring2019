@@ -20,7 +20,9 @@ CREATE DATABASE TickLabInfoSystem;
         passportDateOfIssue DATE,
         passportDateOfExpiry DATE,
         profilePhotoURL TEXT,
-        PRIMARY KEY(profileNumber)
+        projectFundContributor INT,
+        PRIMARY KEY(profileNumber),
+        FOREIGN KEY(projectFundContributor) REFERENCES ProjectFundContributor(projectFundContributor)
     );
     -- TickLab ID CARD
     CREATE TABLE TickLabIDCard (
@@ -96,6 +98,15 @@ CREATE DATABASE TickLabInfoSystem;
         PRIMARY KEY(projectID, projectDocumentURL),
         FOREIGN KEY(projectID) REFERENCES Project(projectID) 
     );
+    -- Project Fund Contributor
+    CREATE TABLE ProjectFundContributor (
+        projectFundContributor INT,
+        PRIMARY KEY(projectFundContributor)
+    );
+    -- Contributing
+    CREATE TABLE Contributing (
+        
+    );
     -- Seminar workshop
     CREATE TABLE SeminarWorkshop (
         projectID INT,
@@ -116,8 +127,8 @@ CREATE DATABASE TickLabInfoSystem;
     );
     -- Application form
     CREATE TABLE ApplicationForm (
-        projectIDForm INT,
-        formID INT,
+        projectIDForm INT NOT NULL,
+        formID INT NOT NULL,
         formFirstName TEXT,
         formMiddleName TEXT,
         formLastName TEXT,
@@ -131,16 +142,14 @@ CREATE DATABASE TickLabInfoSystem;
         PRIMARY KEY(projectIDForm, formID),
         FOREIGN KEY(projectIDForm) REFERENCES Project(projectID)
     );
-    -- Form of
-    CREATE TABLE FormOf (
-
-    );
     -- Company
     CREATE TABLE Company (
         taxIDNumber VARCHAR(9) NOT NULL,
         conpanyName TEXT,
         companyDescription TEXT,
-        PRIMARY KEY(taxIDNumber)
+        projectFundContributor INT,
+        PRIMARY KEY(taxIDNumber),
+        FOREIGN KEY(projectFundContributor) REFERENCES ProjectFundContributor(projectFundContributor)
     );
     -- Company related documents
     CREATE TABLE CompanyRelatedDoc (
