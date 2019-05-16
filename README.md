@@ -63,5 +63,5 @@ II. Relationships:
 
 # Phase 5: creating database using SQL statements
 - File: MySQL.sql <br/>
-	**Kha:** Write the SQL code <br/>
-	**Dat:** Verify the code using SQL Server Management Studio (SSMS)
+	**Kha + Phong:** Generate data and SQL code for inserting into tables <br/>
+	**Dat:** Write SQL code for creating tables and create indexes
