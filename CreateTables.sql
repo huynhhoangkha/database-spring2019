@@ -1,6 +1,12 @@
 -- CREATE DATABASE
 CREATE DATABASE TickLabInfoSystem;
+USE TickLabInfoSystem;
 -- CREATE TABLE
+    -- Project Fund Contributor
+    CREATE TABLE ProjectFundContributor (
+        projectFundContributor INT NOT NULL,
+        PRIMARY KEY(projectFundContributor)
+    );
     -- Person
     CREATE TABLE Person (
         profileNumber INT NOT NULL,
@@ -28,36 +34,36 @@ CREATE DATABASE TickLabInfoSystem;
     CREATE TABLE TickLabIDCard (
         profileNumber INT NOT NULL,
         dateOfIssue DATE NOT NULL,
-        rfIDNummber VARCHAR(9) NOT NULL,
-        PRIMARY KEY(profileNumber, dateOfIssuem, rfidNumber),
+        rfidNumber VARCHAR(9) NOT NULL,
+        PRIMARY KEY(profileNumber, dateOfIssue, rfidNumber),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Contact address
     CREATE TABLE PersonContactAddress (
         profileNumber INT NOT NULL,
-        contactAddress TEXT NOT NULL,
+        contactAddress VARCHAR(256) NOT NULL,
         PRIMARY KEY(profileNumber, contactAddress),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Email address
     CREATE TABLE PersonEmailAddress (
         profileNumber INT NOT NULL,
-        emailAddress TEXT NOT NULL,
+        emailAddress VARCHAR(256) NOT NULL,
         PRIMARY KEY(profileNumber, emailAddress),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- System roles
     CREATE TABLE PersonSystemRole (
         profileNumber INT NOT NULL,
-        systemRole TEXT NOT NULL,
+        systemRole VARCHAR(256) NOT NULL,
         PRIMARY KEY(profileNumber, systemRole),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Person related documents
     CREATE TABLE PersonRelatedDoc (
         profileNumber INT NOT NULL,
-        personDocumentURL TEXT NOT NULL,
-        PRIMARY KEY(profileNumber, documentURL),
+        personDocumentURL VARCHAR(256) NOT NULL,
+        PRIMARY KEY(profileNumber, personDocumentURL),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Person phone number
@@ -71,7 +77,6 @@ CREATE DATABASE TickLabInfoSystem;
     CREATE TABLE Department (
         departmentID INT NOT NULL,
         departmentName TEXT,
-        departmentID INT,
         departmentDescription TEXT,
         PRIMARY KEY(departmentID)
     );
@@ -94,14 +99,9 @@ CREATE DATABASE TickLabInfoSystem;
     -- Project related documents
     CREATE TABLE ProjectRelatedDoc (
         projectID INT NOT NULL,
-        projectDocumentURL TEXT NOT NULL,
+        projectDocumentURL VARCHAR(256) NOT NULL,
         PRIMARY KEY(projectID, projectDocumentURL),
         FOREIGN KEY(projectID) REFERENCES Project(projectID) 
-    );
-    -- Project Fund Contributor
-    CREATE TABLE ProjectFundContributor (
-        projectFundContributor INT NOT NULL,
-        PRIMARY KEY(projectFundContributor)
     );
     -- Contributing
     CREATE TABLE Contributing (
@@ -158,7 +158,7 @@ CREATE DATABASE TickLabInfoSystem;
     -- Company related documents
     CREATE TABLE CompanyRelatedDoc (
         taxIDNumber VARCHAR(9) NOT NULL,
-        companyDocumentURL TEXT,
+        companyDocumentURL VARCHAR(256) NOT NULL,
         PRIMARY KEY(taxIDNumber, companyDocumentURL),
         FOREIGN KEY(taxIDNumber) REFERENCES Company(taxIDNumber)
     );
@@ -201,7 +201,7 @@ CREATE DATABASE TickLabInfoSystem;
     -- Task remake
     CREATE TABLE TaskRemark (
         taskID INT NOT NULL,
-        taskRemark TEXT NOT NULL,
+        taskRemark VARCHAR(256) NOT NULL,
         PRIMARY KEY(taskID, taskRemark),
         FOREIGN KEY(taskID) REFERENCES Task(taskID)
     );
@@ -214,20 +214,19 @@ CREATE DATABASE TickLabInfoSystem;
     )
     -- Duty shift
     CREATE TABLE DutyShift (
-        dutyID INT,
+        dutyID INT NOT NULL,
         shift VARCHAR(11),
         PRIMARY KEY(dutyID, shift),
         FOREIGN KEY(dutyID) REFERENCES DailyDuty(dutyID)
-    )
+    );
     -- Infrastructures
     CREATE TABLE Infrastructure (
-        infraID INT,
+        infraID INT NOT NULL,
         infraName TEXT,
         totalNumber INT,
         numberOfAvailable INT,
         infraDescription TEXT,
-        PRIMARY KEY(infraID),
-
+        PRIMARY KEY(infraID)
     );
     -- Borrow record
     CREATE TABLE BorrowRecord (
