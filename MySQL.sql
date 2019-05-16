@@ -8,73 +8,79 @@ CREATE DATABASE TickLabInfoSystem;
         passwd VARCHAR (10),
         gender BIT,
         permanentAddress TEXT,
-        dateOfBirth DATETIME,
+        dateOfBirth DATE,
         firstName TEXT,
         middleName TEXT,
         lastName TEXT,
         nationality TEXT,
         nationalIDNumber VARCHAR(9),
-        nationalIDIssueDate DATETIME,
+        nationalIDIssueDate DATE,
         passportNumber TEXT,
         passportPlaceOfIssue TEXT,
-        passportDateOfIssue DATETIME,
-        passportDateOfExpiry DATETIME,
+        passportDateOfIssue DATE,
+        passportDateOfExpiry DATE,
         profilePhotoURL TEXT,
         PRIMARY KEY(profileNumber)
     );
     -- TickLab ID CARD
     CREATE TABLE TickLabIDCard (
-        profileNumber INT,
-        dateOfIssue DATETIME,
-        rfidNumber INT,
-        PRIMARY KEY(rfidNumber),
+        profileNumber INT NOT NULL,
+        dateOfIssue DATE NOT NULL,
+        rfidNumber INT NOT NULL,
+        PRIMARY KEY(profileNumber, dateOfIssuem, rfidNumber),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Contact address
     CREATE TABLE PersonContactAddress (
-        profileNumber INT,
-        contactAddress TEXT,
+        profileNumber INT NOT NULL,
+        contactAddress TEXT NOT NULL,
+        PRIMARY KEY(profileNumber, contactAddress),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Email address
     CREATE TABLE PersonEmailAddress (
-        profileNumber INT,
-        emailAddress TEXT,
+        profileNumber INT NOT NULL,
+        emailAddress TEXT NOT NULL,
+        PRIMARY KEY(profileNumber, emailAddress),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- System roles
     CREATE TABLE PersonSystemRole (
-        profileNumber INT,
-        systemRole TEXT,
+        profileNumber INT NOT NULL,
+        systemRole TEXT NOT NULL,
+        PRIMARY KEY(profileNumber, systemRole),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Person related documents
     CREATE TABLE PersonRelatedDoc (
-        profileNumber INT,
-        documentURL TEXT,
+        profileNumber INT NOT NULL,
+        personDocumentURL TEXT NOT NULL,
+        PRIMARY KEY(profileNumber, documentURL),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Person phone number
     CREATE TABLE PersonPhoneNumber (
-        profileNumber INT,
-        phoneNumber TEXT,
+        profileNumber INT NOT NULL,
+        phoneNumber TEXT NOT NULL,
+        PRIMARY KEY(profileNumber, phoneNumber),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Department
     CREATE TABLE Department (
+        departmentID INT NOT NULL,
         departmentName TEXT,
         departmentID INT,
         departmentDescription TEXT,
         PRIMARY KEY(departmentID)
-    )
+    );
     -- Project
     CREATE TABLE Project (
         projectName TEXT,
         projectID VARCHAR(10) NOT NULL,
-        projectStartTime DATETIME,
-        projectEndTime DATETIME,
+        projectStartTime DATE,
+        projectEndTime DATE,
         projectStatus TEXT,
-        expectedFinishTime DATETIME,
+        expectedFinishTime DATE,
         projectDescription TEXT,
         TickLabBudget INT,
         projectManagerProfileNumber INT,
@@ -85,52 +91,75 @@ CREATE DATABASE TickLabInfoSystem;
     );
     -- Project related documents
     CREATE TABLE ProjectRelatedDoc (
+        projectID INT NOT NULL,
+        projectDocumentURL TEXT NOT NULL,
+        PRIMARY KEY(projectID, projectDocumentURL),
+        FOREIGN KEY(projectID) REFERENCES Project(projectID) 
     );
     -- Company
     CREATE TABLE Company (
+        taxIDNumber VARCHAR(9) NOT NULL,
         conpanyName TEXT,
-        taxIDNumber VARCHAR(9),
         companyDescription TEXT,
         PRIMARY KEY(taxIDNumber)
     );
     -- Company related documents
     CREATE TABLE CompanyRelatedDoc (
-        -- multiple foreign key
+        taxIDNumber VARCHAR(9) NOT NULL,
+        companyDocumentURL TEXT,
+        PRIMARY KEY(taxIDNumber, companyDocumentURL),
+        FOREIGN KEY(taxIDNumber) REFERENCES Company(taxIDNumber)
     );
     -- Position
     CREATE TABLE Position (
-        posID INT,
+        posID INT NOT NULL,
         posName TEXT,
         posDescription TEXT,
         PRIMARY KEY(posID)
     );
     -- Person take position
     CREATE TABLE "Take" (
-        profileNumberTake INT,
-        posIDTake INT,
-        takeFromdate DATETIME,
-        takeToDate DATETIME,
-        FOREIGN KEY() -- multiple foreign key
+        profileNumberTake INT NOT NULL,
+        posIDTake INT NOT NULL,
+        takeFromdate DATE,
+        takeToDate DATE,
+        PRIMARY KEY(profileNumberTake, posIDTake),
+        FOREIGN KEY(profileNumberTake) REFERENCES Person(profileNumber),
+        FOREIGN KEY(posIDTake) REFERENCES Position(posID)
     );
     -- Task
     CREATE TABLE Task (
-        taskID INT,
-        taskStartTime DATETIME,
-        taskEndTime DATETIME,
+        taskID INT NOT NULL,
+        taskStartTime DATE,
+        taskEndTime DATE,
         whatToDo TEXT,
         taskDescription TEXT,
         taskStatus TEXT,
         PRIMARY KEY(taskID)
-    )
+    );
     -- Task's paricipate
     CREATE TABLE Participate (
-        profileNumberParticipate INT,
-        taskIDParticipate INT,
+        profileNumberParticipate INT NOT NULL,
+        taskIDParticipate INT NOT NULL,
         score INT,
-        FOREIGN KEY () -- multiple foreign key
+        PRIMARY KEY(profileNumberParticipate, taskIDParticipate),
+        FOREIGN KEY(profileNumberParticipate) REFERENCES Person(profileNumber),
+        FOREIGN KEY(taskIDParticipate) REFERENCES Task(taskID)
     );
     -- Task remake
+    CREATE TABLE TaskRemark (
+        taskID INT NOT NULL,
+        taskRemark TEXT NOT NULL,
+        PRIMARY KEY(taskID, taskRemark),
+        FOREIGN KEY(taskID) REFERENCES Task(taskID)
+    );
     -- Daily duty
+    CREATE TABLE DailyDuty (
+        dutyID INT NOT NULL,
+        dutyName TEXT,
+        dutyDescription TEXT,
+        PRIMARY KEY(dutyID)
+    )
     -- Duty shift
     -- Application form
     -- Seminar workshop
