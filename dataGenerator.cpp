@@ -262,6 +262,7 @@ struct Person {
 	NullableDate passportDateOfIssue;
 	NullableDate passportDateOfExpiry;
 	NullableString profilePhotoURL;
+    NullableInt projectFundContributor;
 	string sqlInsertCommand() {
 		return string("INSERT INTO Person VALUES(")
 			+ profileNumber.sqlFormat() + string(", ")
@@ -280,6 +281,7 @@ struct Person {
 			+ passportPlaceOfIssue.sqlFormat() + string(", ")
 			+ passportDateOfIssue.sqlFormat() + string(", ")
 			+ passportDateOfExpiry.sqlFormat() + string(", ")
+            + projectFundContributor.sqlFormat() + string(", ")
 			+ profilePhotoURL.sqlFormat() + string(");");
 	}
 };
