@@ -82,7 +82,7 @@ CREATE DATABASE TickLabInfoSystem;
         projectStatus TEXT,
         expectedFinishTime DATE,
         projectDescription TEXT,
-        TickLabBudget INT,
+        TickLabBudget MONEY,
         projectManagerProfileNumber INT,
         belongToDepartmentHave INT,
         PRIMARY KEY(projectID),
@@ -118,7 +118,7 @@ CREATE DATABASE TickLabInfoSystem;
         PRIMARY KEY(posID)
     );
     -- Person take position
-    CREATE TABLE "Take" (
+    CREATE TABLE Taking (
         profileNumberTake INT NOT NULL,
         posIDTake INT NOT NULL,
         takeFromdate DATE,
@@ -161,14 +161,90 @@ CREATE DATABASE TickLabInfoSystem;
         PRIMARY KEY(dutyID)
     )
     -- Duty shift
+    CREATE TABLE DutyShift (
+        dutyID INT,
+        shift VARCHAR(11),
+        PRIMARY KEY(dutyID, shift),
+        FOREIGN KEY(dutyID) REFERENCES DailyDuty(dutyID)
+    )
     -- Application form
+    CREATE TABLE ApplicationForm ();
     -- Seminar workshop
+    CREATE TABLE SeminarWorkshop ();
     -- Interview
+    CREATE TABLE Interview ();
     -- Community activity
+    CREATE TABLE CommunityActivity ();
     -- Infrastructures
-    -- Include
+    CREATE TABLE Infrastructure (
+        infraID INT,
+        infraName TEXT,
+        totalNumber INT,
+        numberOfAvailable INT,
+        infraDescription TEXT,
+        PRIMARY KEY(infraID),
+
+    );
     -- Borrow record
-    -- Revenue category
-    -- Expediture category
+    CREATE TABLE BorrowRecord (
+        borrowID INT,
+        borrowDate DATE,
+        borrowStatus BIT,
+        borrower INT,
+        PRIMARY KEY(borrowID),
+        FOREIGN KEY(borrower) REFERENCES Person(profileNumber)
+    )
+    -- Include
+    CREATE TABLE Including (
+        borrowIDInclude INT,
+        infraIDInclude INT,
+        numberOfItem INT,
+        dueDate DATE,
+        returnDate DATE,
+        PRIMARY KEY(borrowIDInclude, infraIDInclude),
+        FOREIGN KEY(borrowIDInclude) REFERENCES BorrowRecord(borrowID),
+        FOREIGN KEY(infraIDInclude) REFERENCES Infrastructure(infraID)
+    )
     -- Fund
+    CREATE TABLE Fund (
+        fundID INT,
+        currentBudget MONEY,
+        originalCapital MONEY,
+        treasurer INT,
+        PRIMARY KEY(fundID),
+        FOREIGN KEY(treasurer) REFERENCES Person(profileNumber)
+    );
+    -- Revenue category
+    CREATE TABLE RevenueCategory (
+        revenueID INT,
+        revenueName TEXT,
+        moneyHaveToPay MONEY,
+        moneyPay MONEY,
+        moneyRest MONEY,
+        revenueDeadline DATE,
+        revenueDescription TEXT,
+        fundIDRevenue INT,
+        PRIMARY KEY(revenueID),
+        FOREIGN KEY(fundIDRevenue) REFERENCES Fund(fundID)
+    );
+    -- Expediture category
+    CREATE TABLE ExpeditureCategory (
+        expeditureID INT,
+        expeditureName TEXT,
+        expeditureDate DATE,
+        expeditureMoney MONEY,
+        expeditureDescription TEXT,
+        fundIDExpediture INT,
+        PRIMARY KEY(expeditureID),
+        FOREIGN KEY(fundIDExpediture) REFERENCES Person(profileNumber)
+    );
     -- Have to pay
+    CREATE TABLE HaveToPay (
+        profileNumberPay INT,
+        revenueIDPay INT,
+        weighting FLOAT,
+        amount INT,
+        PRIMARY KEY(profileNumberPay, revenueIDPay),
+        FOREIGN KEY(profileNumberPay) REFERENCES Person(profileNumber),
+        FOREIGN KEY(revenueIDPay) REFERENCES RevenueCategory(revenueID)
+    );
