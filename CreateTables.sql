@@ -109,29 +109,39 @@ USE TickLabInfoSystem;
         projectID INT NOT NULL,
         contributingDate DATETIME,
         amountOfMoney MONEY,
-        PRIMARY KEY(projectFundContributor, projectID)
+        PRIMARY KEY(projectFundContributor, projectID),
+        FOREIGN KEY(projectFundContributor) REFERENCES ProjectFundContributor(projectFundContributor),
+        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+    );
+    -- Internal project
+    CREATE TABLE InternalProject (
+        projectID INT,
+        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+    );
+    -- Community activity
+    CREATE TABLE CommunityActivity (
+        communityID INT,
+        place TEXT,
+        PRIMARY KEY(communityID)
     );
     -- Seminar workshop
     CREATE TABLE SeminarWorkshop (
         projectID INT,
         topic TEXT,
-        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+        communityID INT,
+        FOREIGN KEY(projectID) REFERENCES Project(projectID),
+        FOREIGN KEY(communityID) REFERENCES CommunityActivity(communityID)
     );
     -- Interview
     CREATE TABLE Interview (
         projectID INT,
         requirement TEXT,
-        FOREIGN KEY(projectID) REFERENCES Project(projectID)
-    );
-    -- Community activity
-    CREATE TABLE CommunityActivity (
-        projectID INT,
-        place TEXT,
+        communityID INT,
         FOREIGN KEY(projectID) REFERENCES Project(projectID)
     );
     -- Application form
     CREATE TABLE ApplicationForm (
-        projectIDForm INT NOT NULL,
+        communityIDForm INT NOT NULL,
         formID INT NOT NULL,
         formFirstName TEXT,
         formMiddleName TEXT,
@@ -143,8 +153,8 @@ USE TickLabInfoSystem;
         formSocialAccount TEXT,
         formEmail TEXT,
         formCVURL TEXT,
-        PRIMARY KEY(projectIDForm, formID),
-        FOREIGN KEY(projectIDForm) REFERENCES Project(projectID)
+        PRIMARY KEY(communityIDForm, formID),
+        FOREIGN KEY(communityIDForm) REFERENCES CommunityActivity(communityID)
     );
     -- Company
     CREATE TABLE Company (
@@ -163,7 +173,7 @@ USE TickLabInfoSystem;
         FOREIGN KEY(taxIDNumber) REFERENCES Company(taxIDNumber)
     );
     -- Position
-    CREATE TABLE Position (
+    CREATE TABLE WorkPosition (
         posID INT NOT NULL,
         posName TEXT,
         posDescription TEXT,
@@ -177,7 +187,7 @@ USE TickLabInfoSystem;
         takeToDate DATE,
         PRIMARY KEY(profileNumberTake, posIDTake),
         FOREIGN KEY(profileNumberTake) REFERENCES Person(profileNumber),
-        FOREIGN KEY(posIDTake) REFERENCES Position(posID)
+        FOREIGN KEY(posIDTake) REFERENCES WorkPosition(posID),
     );
     -- Task
     CREATE TABLE Task (
@@ -211,7 +221,7 @@ USE TickLabInfoSystem;
         dutyName TEXT,
         dutyDescription TEXT,
         PRIMARY KEY(dutyID)
-    )
+    );
     -- Duty shift
     CREATE TABLE DutyShift (
         dutyID INT NOT NULL,
