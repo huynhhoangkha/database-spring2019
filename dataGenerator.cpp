@@ -59,7 +59,7 @@ public:
             string month = to_string(this->data.month);
             while (month.length() < 2) month.insert(month.begin(), '0');
             string year = to_string(this->data.year);
-            return string("CONVERT(DATE, ")
+            return string("CONVERT(DATETIME, ")
                     + day + string("-")
                     + month + string("-")
                     + year + string(", 105)");
