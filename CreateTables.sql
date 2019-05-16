@@ -4,8 +4,8 @@ CREATE DATABASE TickLabInfoSystem;
     -- Person
     CREATE TABLE Person (
         profileNumber INT NOT NULL,
-        username VARCHAR(10),
-        passwd VARCHAR (10),
+        username TEXT,
+        passwd TEXT,
         gender BIT,
         permanentAddress TEXT,
         dateOfBirth DATE,
@@ -26,7 +26,7 @@ CREATE DATABASE TickLabInfoSystem;
     CREATE TABLE TickLabIDCard (
         profileNumber INT NOT NULL,
         dateOfIssue DATE NOT NULL,
-        rfidNumber VARCHAR(9) NOT NULL,
+        rfIDNummber VARCHAR(9) NOT NULL,
         PRIMARY KEY(profileNumber, dateOfIssuem, rfidNumber),
         FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
