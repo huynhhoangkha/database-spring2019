@@ -164,6 +164,7 @@ Date randomDateOfIssue (Date birthDay, int yearAfter) {
     //srand(time(0));
     Date res;
     res.year = birthDay.year + yearAfter;
+    if (res.year > 2018) res.year = 2018;
     res.month = rand() % 12 + 1;
     int maxDay;
     switch (res.month) {
