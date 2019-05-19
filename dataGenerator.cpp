@@ -240,6 +240,13 @@ string randomNationIDNumber() {
 	for (int i = 0; i < 9; i++) res.push_back(digitRand());
 	return res;
 }
+
+string randomPhoneNumber () {
+	string res;
+	res.push_back('0');
+	for (int i = 0; i < 9; i++) res.push_back(digitRand());
+	return res;
+}
 #pragma endregion RANDOM_FUNCTION
 
 #pragma region TABLE
@@ -263,7 +270,7 @@ struct Person {
 	NullableDate passportDateOfExpiry;
 	NullableString profilePhotoURL;
     NullableInt projectFundContributor;
-	string sqlInsertCommand() {
+	string mysqlInsertCommand() {
 		return string("INSERT INTO Person VALUES(")
 			+ profileNumber.sqlFormat() + string(", ")
 			+ username.sqlFormat() + string(", ")
@@ -291,7 +298,7 @@ struct TickLabIDCard {
 	NullableInt profileNumber;
 	NullableDate dateOfIssue;
 	NullableString rfidNumber;
-	string sqlInsertCommand() {
+	string mysqlInsertCommand() {
 		return string("INSERT INTO TickLabIDCard VALUES(")
 			+ profileNumber.sqlFormat() + string(", ")
 			+ dateOfIssue.sqlFormat() + string(", ")
@@ -303,13 +310,28 @@ struct TickLabIDCard {
 struct PersonEmailAddress {
 	NullableInt profileNumber;
 	NullableString emailAddress;
-	string sqlInsertCommand() {
+	string mysqlInsertCommand() {
 		return string("INSERT INTO PersonEmailAddress VALUES(")
 			+ profileNumber.sqlFormat() + string(", ")
 			+ emailAddress.sqlFormat() + string(");");
 	}
 };
 #pragma endregion PersonEmailAddress
+
+#pragma region PersonPhoneNumber
+
+struct PersonPhoneNumber {
+	NullableInt profileNumber;
+	NullableString phoneNumber;
+	string mysqlInsertCommand () {
+			return string("INSERT INTO PersonEmailAddress VALUES(")
+			+ profileNumber.sqlFormat() + string(", ")
+			+ phoneNumber.sqlFormat() + string(");");
+	}
+};
+
+#pragma endregion PersonPhoneNumber
+
 #pragma endregion TABLE
 
 #pragma region main
@@ -333,7 +355,7 @@ int main() {
 			temp.nationality = "Viet Nam";
 			temp.nationalIDNumber = randomNationIDNumber();
 			temp.nationalIDIssueDate = randomDateOfIssue(temp.dateOfBirth, 15 + rand() % 3);
-			fs << temp.sqlInsertCommand() << endl;
+			fs << temp.mysqlInsertCommand() << endl;
 			personVect.push_back(temp);
 		}
 		fs.close();
@@ -352,7 +374,7 @@ int main() {
 				card.rfidNumber = randomNationIDNumber();
 				card.dateOfIssue = randomDateOfIssue(personVect[i].dateOfBirth, 18 + rand() % 5);
 				ticklabIDCardVect.push_back(card);
-				fs << card.sqlInsertCommand() << endl;
+				fs << card.mysqlInsertCommand() << endl;
 			}
 		}
 		fs.close();
@@ -360,18 +382,36 @@ int main() {
 		 * Email address generate
 		*/
 		fs.open("InsertEmailAddress.sql", ios::out);
-		vector<NullableString> emailAddressVect;
+		vector<NullableString> emailStrVect;
+		vector<PersonEmailAddress> personEmailAddressVect;
 		for (int i = 0; i < numberOfPerson; i++) {
 			temp = rand() % 3 + 1;
 			for (int j = 0; j < temp; j++) {
 				PersonEmailAddress email;
 				email.profileNumber = personVect[i].profileNumber;
 				email.emailAddress = randomEmail(personVect[i].firstName, personVect[i].lastName, personVect[i].dateOfBirth);
-				while (existIn(emailAddressVect, email.emailAddress)) {
+				while (existIn(emailStrVect, email.emailAddress)) {
 					email.emailAddress = randomEmail(personVect[i].firstName, personVect[i].lastName, personVect[i].dateOfBirth);
 				}
-				emailAddressVect.push_back(email.emailAddress);
-				fs << email.sqlInsertCommand() << endl;
+				emailStrVect.push_back(email.emailAddress);
+				personEmailAddressVect.push_back(email);
+				fs << email.mysqlInsertCommand() << endl;
+			}
+		}
+		fs.close();
+		/**
+		 * Person phone number generate
+		*/
+		fs.open("InsertPersonPhoneNumber.sql", ios::out);
+		vector<PersonPhoneNumber> personPhoneNumberVect;
+		for (int i = 0; i < numberOfPerson; i++) {
+			temp = rand() % 3 + 1;
+			for (int j = 0; j < temp; j++) {
+				PersonPhoneNumber phoneNumber;
+				phoneNumber.profileNumber = i;
+				phoneNumber.phoneNumber = randomPhoneNumber();
+				personPhoneNumberVect.push_back(phoneNumber);
+				fs << phoneNumber.mysqlInsertCommand();
 			}
 		}
 		fs.close();
