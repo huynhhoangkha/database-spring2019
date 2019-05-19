@@ -115,8 +115,9 @@ USE TickLabInfoSystem;
     );
     -- Internal project
     CREATE TABLE InternalProject (
-        projectID INT,
-        FOREIGN KEY(projectID) REFERENCES Project(projectID)
+        internalProjectID INT,
+        PRIMARY KEY(internalProjectID),
+        FOREIGN KEY(interalProjectID) REFERENCES Project(projectID)
     );
     -- Community activity
     CREATE TABLE CommunityActivity (
@@ -200,7 +201,9 @@ USE TickLabInfoSystem;
         whatToDo TEXT,
         taskDescription TEXT,
         taskStatus TEXT,
-        PRIMARY KEY(taskID)
+        ofProject INT,
+        PRIMARY KEY(taskID),
+        FOREIGN KEY(ofProject) REFERENCES Project(projectID)
     );
     -- Task's paricipate
     CREATE TABLE Participate (
