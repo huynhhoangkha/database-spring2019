@@ -323,7 +323,7 @@ struct PersonPhoneNumber {
 	NullableInt profileNumber;
 	NullableString phoneNumber;
 	string mysqlInsertCommand() {
-			return string("INSERT INTO PersonEmailAddress VALUES(")
+			return string("INSERT INTO PersonPhoneNumber VALUES(")
 			+ profileNumber.sqlFormat() + string(", ")
 			+ phoneNumber.sqlFormat() + string(");");
 	}
@@ -336,7 +336,7 @@ struct Department {
 	NullableString departmentName;
 	NullableString departmentDescription;
 	string mysqlInsertCommand() {
-		return string("INSERT INTO PersonEmailAddress VALUES(")
+		return string("INSERT INTO Department VALUES(")
 			+ departmentID.sqlFormat() + string(", ")
 			+ departmentName.sqlFormat() + string(", ")
 			+ departmentDescription.sqlFormat() + string(");");
