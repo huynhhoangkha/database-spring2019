@@ -411,7 +411,7 @@ int main() {
 				phoneNumber.profileNumber = i;
 				phoneNumber.phoneNumber = randomPhoneNumber();
 				personPhoneNumberVect.push_back(phoneNumber);
-				fs << phoneNumber.mysqlInsertCommand();
+				fs << phoneNumber.mysqlInsertCommand() << endl;
 			}
 		}
 		fs.close();
