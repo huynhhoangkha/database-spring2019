@@ -319,18 +319,30 @@ struct PersonEmailAddress {
 #pragma endregion PersonEmailAddress
 
 #pragma region PersonPhoneNumber
-
 struct PersonPhoneNumber {
 	NullableInt profileNumber;
 	NullableString phoneNumber;
-	string mysqlInsertCommand () {
+	string mysqlInsertCommand() {
 			return string("INSERT INTO PersonEmailAddress VALUES(")
 			+ profileNumber.sqlFormat() + string(", ")
 			+ phoneNumber.sqlFormat() + string(");");
 	}
 };
-
 #pragma endregion PersonPhoneNumber
+
+#pragma region Department
+struct Department {
+	NullableInt departmentID;
+	NullableString departmentName;
+	NullableString departmentDescription;
+	string mysqlInsertCommand() {
+		return string("INSERT INTO PersonEmailAddress VALUES(")
+			+ departmentID.sqlFormat() + string(", ")
+			+ departmentName.sqlFormat() + string(", ")
+			+ departmentDescription.sqlFormat() + string(");");
+	}
+};
+#pragma endregion Department
 
 #pragma endregion TABLE
 
@@ -413,6 +425,27 @@ int main() {
 				personPhoneNumberVect.push_back(phoneNumber);
 				fs << phoneNumber.mysqlInsertCommand() << endl;
 			}
+		}
+		fs.close();
+		/**
+		 * Department data generate
+		*/
+		fs.open("InsertDepartment.sql", ios::out);
+		fstream ifs;
+		ifs.open("dataResources/department.txt", ios::in);
+		vector<string> departmentNameVect;
+		string line;
+		while (!ifs.eof()) {
+			getline(ifs, line);
+			if (line.length()) departmentNameVect.push_back(line);
+		}
+		ifs.close();
+		int numberOfDepartment = departmentNameVect.size();
+		for (int i = 0; i < numberOfDepartment; i++) {
+			Department department;
+			department.departmentID = i;
+			department.departmentName = departmentNameVect[i];
+			fs << department.mysqlInsertCommand() << endl;
 		}
 		fs.close();
 	}
