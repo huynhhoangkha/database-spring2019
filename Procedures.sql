@@ -39,7 +39,7 @@ AS
 BEGIN
 	SELECT COUNT(numberOfPhoneNumber) AS numberOfPersonUseJustOneNumber FROM
 	(
-	SELECT COUNT(phoneNumber) AS numberOfPhoneNumber FROM	
+	SELECT subsub.profileNumber, COUNT(subsub.phoneNumber) AS numberOfPhoneNumber FROM	
 		(SELECT firstName, lastName, phoneNumber, Person.profileNumber
 		FROM
 		Person INNER JOIN PersonPhoneNumber
