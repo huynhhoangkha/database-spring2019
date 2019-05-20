@@ -49,6 +49,23 @@ BEGIN
 END
 GO
 
+---------------------------------------------------
+
+---- Count how many man or woman employee in the whole team--------
+CREATE FUNCTION sexCount
+( @sex BIT )
+RETURNS INT
+AS
+BEGIN
+	DECLARE
+		@result INT
+	IF @sex = 1 SELECT @result = temp FROM (SELECT COUNT(gender) AS temp FROM Person WHERE gender = 1) AS sub
+	ELSE IF @sex = 0 SELECT @result = temp FROM (SELECT COUNT(gender) AS temp FROM Person WHERE gender = 0) AS sub
+	ELSE RETURN -1
+	RETURN @result
+END
+----------------------------------------------------------------------
+
 
 -- Phong
 -- Insert/add person phone number 
