@@ -31,3 +31,22 @@ BEGIN
 	SELECT phoneNumber FROM PersonPhoneNumber WHERE profileNumber = @profileNumber
 END
 -----------------------------------
+
+-- Phong
+-- Insert/add person phone number 
+CREATE PROC addPersonPhoneNumber
+	@profileNumber int,
+	@phoneNumber varchar(11)
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM Person WHERE profileNumber = @profileNumber)
+	BEGIN
+		IF NOT EXISTS(SELECT * FROM PersonPhoneNumber WHERE phoneNumber = @phoneNumber)
+			INSERT INTO PersonPhoneNumber(profileNumber, phoneNumber)
+			VALUES (@profileNumber, @phoneNumber);
+		ELSE PRINT N'Duplicate Phone Number'
+	END
+END
+GO
+
+
