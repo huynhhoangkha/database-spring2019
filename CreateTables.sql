@@ -91,10 +91,21 @@ USE TickLabInfoSystem;
         projectDescription TEXT,
         TickLabBudget MONEY,
         projectManager INT,
-        belongToDepartmentHave INT,
+        ofDepartment INT,
         PRIMARY KEY(projectID),
-        FOREIGN KEY(projectManagerProfileNumber) REFERENCES Person(profileNumber),
-        FOREIGN KEY(belongToDepartmentHave) REFERENCES Department(departmentID)
+        FOREIGN KEY(projectManager) REFERENCES Person(profileNumber),
+        FOREIGN KEY(ofDepartment) REFERENCES Department(departmentID)
+    );
+        -- Project's paricipant
+    CREATE TABLE ProjectParticipant (
+        participantID INT NOT NULL,
+        projectID INT,
+        profileNumber INT,
+        formDate DATE,
+        toDate DATE,
+        PRIMARY KEY(participantID),
+        FOREIGN KEY(projectID) REFERENCES Project(projectID),
+        FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Project related documents
     CREATE TABLE ProjectRelatedDoc (
@@ -115,19 +126,19 @@ USE TickLabInfoSystem;
     );
     -- Internal project
     CREATE TABLE InternalProject (
-        internalProjectID INT,
+        internalProjectID INT NOT NULL,
         PRIMARY KEY(internalProjectID),
-        FOREIGN KEY(interalProjectID) REFERENCES Project(projectID)
+        FOREIGN KEY(internalProjectID) REFERENCES Project(projectID)
     );
     -- Community activity
     CREATE TABLE CommunityActivity (
-        communityID INT,
+        communityID INT NOT NULL,
         place TEXT,
         PRIMARY KEY(communityID)
     );
     -- Seminar workshop
     CREATE TABLE SeminarWorkshop (
-        projectID INT,
+        projectID INT NOT NULL,
         topic TEXT,
         communityID INT,
         FOREIGN KEY(projectID) REFERENCES Project(projectID),
@@ -205,14 +216,15 @@ USE TickLabInfoSystem;
         PRIMARY KEY(taskID),
         FOREIGN KEY(ofProject) REFERENCES Project(projectID)
     );
-    -- Task's paricipate
-    CREATE TABLE Participate (
-        profileNumberParticipate INT NOT NULL,
-        taskIDParticipate INT NOT NULL,
-        score INT,
-        PRIMARY KEY(profileNumberParticipate, taskIDParticipate),
-        FOREIGN KEY(profileNumberParticipate) REFERENCES Person(profileNumber),
-        FOREIGN KEY(taskIDParticipate) REFERENCES Task(taskID)
+    -- Task's participant
+    CREATE TABLE TaskParticipant (
+        participantID INT NOT NULL,
+        taskID INT NOT NULL,
+        fromDate DATE,
+        toDate DATE,
+        PRIMARY KEY(participantID, taskID),
+        FOREIGN KEY(participantID) REFERENCES Participate(participantID),
+        FOREIGN KEY(taskID) REFERENCES Task(taskID)
     );
     -- Task remake
     CREATE TABLE TaskRemark (
@@ -231,8 +243,8 @@ USE TickLabInfoSystem;
     );
     -- Has to do duty
     CREATE TABLE HaveToDoDuty (
-        profileNumberDuty INT,
-        dutyID INT,
+        profileNumberDuty INT NOT NULL,
+        dutyID INT NOT NULL,
         PRIMARY KEY(profileNumberDuty, dutyID),
         FOREIGN KEY(profileNumberDuty) REFERENCES Person(profileNumber),
         FOREIGN KEY(dutyID) REFERENCES Duty(dutyID)
@@ -248,7 +260,7 @@ USE TickLabInfoSystem;
     );
     -- Borrow record
     CREATE TABLE BorrowRecord (
-        borrowID INT,
+        borrowID INT NOT NULL,
         borrowDate DATE,
         borrowStatus BIT,
         borrower INT,
@@ -257,8 +269,8 @@ USE TickLabInfoSystem;
     );
     -- Include
     CREATE TABLE Including (
-        borrowIDInclude INT,
-        infraIDInclude INT,
+        borrowIDInclude INT NOT NULL,
+        infraIDInclude INT NOT NULL,
         numberOfItem INT,
         dueDate DATE,
         returnDate DATE,
@@ -268,7 +280,7 @@ USE TickLabInfoSystem;
     );
     -- Fund
     CREATE TABLE Fund (
-        fundID INT,
+        fundID INT NOT NULL,
         currentBudget MONEY,
         originalCapital MONEY,
         treasurer INT,
@@ -277,7 +289,7 @@ USE TickLabInfoSystem;
     );
     -- Revenue category
     CREATE TABLE RevenueCategory (
-        revenueID INT,
+        revenueID INT NOT NULL,
         revenueName TEXT,
         moneyHaveToPay MONEY,
         moneyPay MONEY,
@@ -290,7 +302,7 @@ USE TickLabInfoSystem;
     );
     -- Expediture category
     CREATE TABLE ExpeditureCategory (
-        expeditureID INT,
+        expeditureID INT NOT NULL,
         expeditureName TEXT,
         expeditureDate DATE,
         expeditureMoney MONEY,
@@ -301,8 +313,8 @@ USE TickLabInfoSystem;
     );
     -- Have to pay
     CREATE TABLE HaveToPay (
-        profileNumberPay INT,
-        revenueIDPay INT,
+        profileNumberPay INT NOT NULL,
+        revenueIDPay INT NOT NULL,
         weighting FLOAT,
         amount INT,
         PRIMARY KEY(profileNumberPay, revenueIDPay),
