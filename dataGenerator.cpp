@@ -514,6 +514,11 @@ int main() {
 			ofs << department.mssqlInsertCommand() << endl;
 			departmentVect.push_back(department);
 		}
+		Department department;
+		department.departmentID = numberOfDepartment;
+		department.departmentName = "Administration";
+		ofs << department.mssqlInsertCommand() << endl;
+		departmentVect.push_back(department);
 		ofs.close();
 		/**
 		 * generate job position
@@ -530,7 +535,7 @@ int main() {
 		vector<WorkPosition> workPositionVect;
 		WorkPosition workPos;
 		count = 0;
-		for (int i = 0; i < numberOfDepartment; i++) {
+		for (int i = 0; i < numberOfDepartment - 1; i++) {
 			for (int j = 0; j < numberOfWorkPos; j++) {
 				workPos.posID = count++;
 				workPos.posInDepartment = departmentVect[i].departmentID;
@@ -540,6 +545,19 @@ int main() {
 				ofs << workPos.mssqlInsertCommand() << endl;
 			}
 		}
+		ifs.open("dataResources/administrationPos.txt", ios::in);
+		while (!ifs.eof()) {
+			getline(ifs, line);
+			if (line.length()) {
+				workPos.posID = count++;
+				workPos.posName = line;
+				workPos.posInDepartment 
+					= departmentVect[departmentVect.size() - 1].departmentID;
+				workPositionVect.push_back(workPos);
+				ofs << workPos.mssqlInsertCommand() << endl;
+			}
+		}
+		ifs.close();
 		ofs.close();
 		/**
 		 * generate Taking table data
