@@ -10,22 +10,22 @@ USE TickLabInfoSystem;
     -- Person
     CREATE TABLE Person (
         profileNumber INT NOT NULL,
-        username TEXT,
-        passwd TEXT,
+        username VARCHAR(256),
+        passwd VARCHAR(256),
         gender BIT,
-        permanentAddress TEXT,
+        permanentAddress VARCHAR(256),
         dateOfBirth DATE,
-        firstName TEXT,
-        middleName TEXT,
-        lastName TEXT,
-        nationality TEXT,
+        firstName VARCHAR(256),
+        middleName VARCHAR(256),
+        lastName VARCHAR(256),
+        nationality VARCHAR(256),
         nationalIDNumber VARCHAR(9),
         nationalIDIssueDate DATE,
-        passportNumber TEXT,
-        passportPlaceOfIssue TEXT,
+        passportNumber VARCHAR(256),
+        passportPlaceOfIssue VARCHAR(256),
         passportDateOfIssue DATE,
         passportDateOfExpiry DATE,
-        profilePhotoURL TEXT,
+        profilePhotoURL VARCHAR(256),
         projectFundContributor INT,
         PRIMARY KEY(profileNumber),
         FOREIGN KEY(projectFundContributor) REFERENCES ProjectFundContributor(projectFundContributor)
@@ -76,19 +76,19 @@ USE TickLabInfoSystem;
     -- Department
     CREATE TABLE Department (
         departmentID INT NOT NULL,
-        departmentName TEXT,
-        departmentDescription TEXT,
+        departmentName VARCHAR(256),
+        departmentDescription VARCHAR(256),
         PRIMARY KEY(departmentID)
     );
     -- Project
     CREATE TABLE Project (
         projectID INT NOT NULL,
-        projectName TEXT,
+        projectName VARCHAR(256),
         projectStartTime DATE,
         projectEndTime DATE,
-        projectStatus TEXT,
+        projectStatus VARCHAR(256),
         expectedFinishTime DATE,
-        projectDescription TEXT,
+        projectDescription VARCHAR(256),
         TickLabBudget MONEY,
         projectManager INT,
         ofDepartment INT,
@@ -133,13 +133,13 @@ USE TickLabInfoSystem;
     -- Community activity
     CREATE TABLE CommunityActivity (
         communityID INT NOT NULL,
-        place TEXT,
+        place VARCHAR(256),
         PRIMARY KEY(communityID)
     );
     -- Seminar workshop
     CREATE TABLE SeminarWorkshop (
         projectID INT NOT NULL,
-        topic TEXT,
+        topic VARCHAR(256),
         communityID INT,
         FOREIGN KEY(projectID) REFERENCES Project(projectID),
         FOREIGN KEY(communityID) REFERENCES CommunityActivity(communityID)
@@ -147,7 +147,7 @@ USE TickLabInfoSystem;
     -- Interview
     CREATE TABLE Interview (
         projectID INT,
-        requirement TEXT,
+        requirement VARCHAR(256),
         communityID INT,
         FOREIGN KEY(projectID) REFERENCES Project(projectID),
         FOREIGN KEY(communityID) REFERENCES CommunityActivity(communityID)
@@ -156,24 +156,24 @@ USE TickLabInfoSystem;
     CREATE TABLE ApplicationForm (
         communityIDForm INT NOT NULL,
         formID INT NOT NULL,
-        formFirstName TEXT,
-        formMiddleName TEXT,
-        formLastName TEXT,
+        formFirstName VARCHAR(256),
+        formMiddleName VARCHAR(256),
+        formLastName VARCHAR(256),
         formGender BIT,
         formDateOfBirth DATE,
         formPhoneNumber VARCHAR(11),
-        formContactAddress TEXT,
-        formSocialAccount TEXT,
-        formEmail TEXT,
-        formCVURL TEXT,
+        formContactAddress VARCHAR(256),
+        formSocialAccount VARCHAR(256),
+        formEmail VARCHAR(256),
+        formCVURL VARCHAR(256),
         PRIMARY KEY(communityIDForm, formID),
         FOREIGN KEY(communityIDForm) REFERENCES CommunityActivity(communityID)
     );
     -- Company
     CREATE TABLE Company (
         taxIDNumber VARCHAR(9) NOT NULL,
-        conpanyName TEXT,
-        companyDescription TEXT,
+        conpanyName VARCHAR(256),
+        companyDescription VARCHAR(256),
         projectFundContributor INT,
         PRIMARY KEY(taxIDNumber),
         FOREIGN KEY(projectFundContributor) REFERENCES ProjectFundContributor(projectFundContributor)
@@ -188,8 +188,8 @@ USE TickLabInfoSystem;
     -- Position
     CREATE TABLE WorkPosition (
         posID INT NOT NULL,
-        posName TEXT,
-        posDescription TEXT,
+        posName VARCHAR(256),
+        posDescription VARCHAR(256),
         posInDepartment INT,
         PRIMARY KEY(posID),
         FOREIGN KEY(posInDepartment) REFERENCES Department(departmentID)
@@ -209,9 +209,9 @@ USE TickLabInfoSystem;
         taskID INT NOT NULL,
         taskStartTime DATE,
         taskEndTime DATE,
-        whatToDo TEXT,
-        taskDescription TEXT,
-        taskStatus TEXT,
+        whatToDo VARCHAR(256),
+        taskDescription VARCHAR(256),
+        taskStatus VARCHAR(256),
         ofProject INT,
         PRIMARY KEY(taskID),
         FOREIGN KEY(ofProject) REFERENCES Project(projectID)
@@ -236,9 +236,9 @@ USE TickLabInfoSystem;
     -- Duty
     CREATE TABLE Duty (
         dutyID INT NOT NULL,
-        dutyName TEXT,
-        shift TEXT,
-        dutyDescription TEXT,
+        dutyName VARCHAR(256),
+        shift VARCHAR(256),
+        dutyDescription VARCHAR(256),
         PRIMARY KEY(dutyID)
     );
     -- Has to do duty
@@ -252,10 +252,10 @@ USE TickLabInfoSystem;
     -- Infrastructures
     CREATE TABLE Infrastructure (
         infraID INT NOT NULL,
-        infraName TEXT,
+        infraName VARCHAR(256),
         totalNumber INT,
         numberOfAvailable INT,
-        infraDescription TEXT,
+        infraDescription VARCHAR(256),
         PRIMARY KEY(infraID)
     );
     -- Borrow record
@@ -290,12 +290,12 @@ USE TickLabInfoSystem;
     -- Revenue category
     CREATE TABLE RevenueCategory (
         revenueID INT NOT NULL,
-        revenueName TEXT,
+        revenueName VARCHAR(256),
         moneyHaveToPay MONEY,
         moneyPay MONEY,
         moneyRest MONEY,
         revenueDeadline DATE,
-        revenueDescription TEXT,
+        revenueDescription VARCHAR(256),
         fundIDRevenue INT,
         PRIMARY KEY(revenueID),
         FOREIGN KEY(fundIDRevenue) REFERENCES Fund(fundID)
@@ -303,10 +303,10 @@ USE TickLabInfoSystem;
     -- Expediture category
     CREATE TABLE ExpeditureCategory (
         expeditureID INT NOT NULL,
-        expeditureName TEXT,
+        expeditureName VARCHAR(256),
         expeditureDate DATE,
         expeditureMoney MONEY,
-        expeditureDescription TEXT,
+        expeditureDescription VARCHAR(256),
         fundIDExpediture INT,
         PRIMARY KEY(expeditureID),
         FOREIGN KEY(fundIDExpediture) REFERENCES Person(profileNumber)
