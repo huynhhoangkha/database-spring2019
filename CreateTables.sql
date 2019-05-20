@@ -126,19 +126,19 @@ USE TickLabInfoSystem;
     );
     -- Internal project
     CREATE TABLE InternalProject (
-        internalProjectID INT,
+        internalProjectID INT NOT NULL,
         PRIMARY KEY(internalProjectID),
         FOREIGN KEY(internalProjectID) REFERENCES Project(projectID)
     );
     -- Community activity
     CREATE TABLE CommunityActivity (
-        communityID INT,
+        communityID INT NOT NULL,
         place TEXT,
         PRIMARY KEY(communityID)
     );
     -- Seminar workshop
     CREATE TABLE SeminarWorkshop (
-        projectID INT,
+        projectID INT NOT NULL,
         topic TEXT,
         communityID INT,
         FOREIGN KEY(projectID) REFERENCES Project(projectID),
@@ -243,8 +243,8 @@ USE TickLabInfoSystem;
     );
     -- Has to do duty
     CREATE TABLE HaveToDoDuty (
-        profileNumberDuty INT,
-        dutyID INT,
+        profileNumberDuty INT NOT NULL,
+        dutyID INT NOT NULL,
         PRIMARY KEY(profileNumberDuty, dutyID),
         FOREIGN KEY(profileNumberDuty) REFERENCES Person(profileNumber),
         FOREIGN KEY(dutyID) REFERENCES Duty(dutyID)
@@ -260,7 +260,7 @@ USE TickLabInfoSystem;
     );
     -- Borrow record
     CREATE TABLE BorrowRecord (
-        borrowID INT,
+        borrowID INT NOT NULL,
         borrowDate DATE,
         borrowStatus BIT,
         borrower INT,
@@ -269,8 +269,8 @@ USE TickLabInfoSystem;
     );
     -- Include
     CREATE TABLE Including (
-        borrowIDInclude INT,
-        infraIDInclude INT,
+        borrowIDInclude INT NOT NULL,
+        infraIDInclude INT NOT NULL,
         numberOfItem INT,
         dueDate DATE,
         returnDate DATE,
@@ -280,7 +280,7 @@ USE TickLabInfoSystem;
     );
     -- Fund
     CREATE TABLE Fund (
-        fundID INT,
+        fundID INT NOT NULL,
         currentBudget MONEY,
         originalCapital MONEY,
         treasurer INT,
@@ -289,7 +289,7 @@ USE TickLabInfoSystem;
     );
     -- Revenue category
     CREATE TABLE RevenueCategory (
-        revenueID INT,
+        revenueID INT NOT NULL,
         revenueName TEXT,
         moneyHaveToPay MONEY,
         moneyPay MONEY,
@@ -302,7 +302,7 @@ USE TickLabInfoSystem;
     );
     -- Expediture category
     CREATE TABLE ExpeditureCategory (
-        expeditureID INT,
+        expeditureID INT NOT NULL,
         expeditureName TEXT,
         expeditureDate DATE,
         expeditureMoney MONEY,
@@ -313,8 +313,8 @@ USE TickLabInfoSystem;
     );
     -- Have to pay
     CREATE TABLE HaveToPay (
-        profileNumberPay INT,
-        revenueIDPay INT,
+        profileNumberPay INT NOT NULL,
+        revenueIDPay INT NOT NULL,
         weighting FLOAT,
         amount INT,
         PRIMARY KEY(profileNumberPay, revenueIDPay),
