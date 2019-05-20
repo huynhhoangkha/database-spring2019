@@ -21,7 +21,7 @@ GO
 ---------------------------
 
 -- Get phone number from email----
-ALTER PROCEDURE getPhoneNumberByEmail
+CREATE PROCEDURE getPhoneNumberByEmail
 	@email VARCHAR(256)
 AS
 BEGIN
@@ -31,3 +31,18 @@ BEGIN
 	SELECT phoneNumber FROM PersonPhoneNumber WHERE profileNumber = @profileNumber
 END
 -----------------------------------
+
+-- Count how many person just use only one phone number
+CREATE PROCEDURE numberOfPersonUseJustOneNumber
+AS
+BEGIN
+	SELECT COUNT(numberOfPhoneNumber) AS numberOfPersonUseJustOneNumber FROM
+	(
+	SELECT COUNT(phoneNumber) AS numberOfPhoneNumber FROM	
+		(SELECT firstName, lastName, phoneNumber, Person.profileNumber
+		FROM
+		Person INNER JOIN PersonPhoneNumber
+		ON Person.profileNumber = PersonPhoneNumber.profileNumber) AS subsub
+	GROUP BY profileNumber
+	HAVING COUNT(phoneNumber) = 1) AS SUB
+END
