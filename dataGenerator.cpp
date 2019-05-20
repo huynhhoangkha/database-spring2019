@@ -534,7 +534,8 @@ int main() {
 			for (int j = 0; j < numberOfWorkPos; j++) {
 				workPos.posID = count++;
 				workPos.posInDepartment = departmentVect[i].departmentID;
-				workPos.posName = (departmentVect[i].departmentName) + (workPositionVect[j].posName);
+				workPos.posName = departmentVect[i].departmentName 
+					+ NullableString(string(" ")) + NullableString(strPosNameVect[j]);
 				workPositionVect.push_back(workPos);
 				ofs << workPos.mssqlInsertCommand() << endl;
 			}
