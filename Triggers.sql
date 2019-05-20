@@ -45,6 +45,23 @@ BEGIN TRAN
 	DELETE FROM WorkPosition WHERE posID = @posID
     COMMIT
 GO
-DELETE FROM WorkPosition WHERE posID = 0
 
 -- After
+CREATE TRIGGER aftInsertBorrowRecord ON BorrowRecord
+FOR INSERT
+AS
+DECLARE
+	@borrowRecordID INT,
+	@infraID INT,
+	@numberOfItem INT
+
+	SELECT @borrowRecordID = inserted.borrowID FROM inserted
+BEGIN
+	SELECT @numberOfItem = numberOfItem, @infraID = infraIDInclude
+	FROM Including
+	WHERE borrowIDInclude = @borrowRecordID
+
+	UPDATE Infrastructure
+	SET numberOfAvailable -= @numberOfItem
+	WHERE infraID = @infraID
+END
