@@ -69,14 +69,14 @@ GO
 
 -- Find person First/Last name and print out national ID number and TickLab ID number
 CREATE PROCEDURE printPersonIDByFirstNameOrLastName
-	@name varchar(40)
+	@name varchar(256)
 AS
 BEGIN
-	DECLARE @likename varchar(40);
+	DECLARE @likename varchar(256);
 	SET @likename='%'+@name;
-	SELECT firstName+' '+lastName as name,nationalIDNumber,rfidNumber
+	SELECT firstName+' '+lastName AS name,nationalIDNumber,rfidNumber
 	FROM Person,TickLabIDCard
-	WHERE (firstName like @likename or lastName like @likename) and Person.profileNumber = TickLabIDCard.profileNumber
+	WHERE (firstName LIKE @likename OR lastName LIKE @likename) and Person.profileNumber = TickLabIDCard.profileNumber
 	ORDER BY name
 	RETURN @@ROWCOUNT
 END
