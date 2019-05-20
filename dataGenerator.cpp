@@ -295,6 +295,27 @@ struct Person {
             + projectFundContributor.mssqlFormat() + string(", ")
 			+ profilePhotoURL.mssqlFormat() + string(");");
 	}
+	Person& operator+(const Person& obj) {
+		this->dateOfBirth = obj.dateOfBirth;
+		this->firstName = obj.firstName;
+		this->gender = obj.gender;
+		this->lastName = obj.lastName;
+		this->middleName = obj.middleName;
+		this->nationalIDIssueDate = obj.nationalIDIssueDate;
+		this->nationalIDNumber = obj.nationalIDNumber;
+		this->nationality = obj.nationality;
+		this->passportDateOfExpiry = obj.passportDateOfExpiry;
+		this->passportDateOfIssue = obj.passportDateOfIssue;
+		this->passportNumber = obj.passportNumber;
+		this->passportPlaceOfIssue = obj.passportPlaceOfIssue;
+		this->passwd = obj.passwd;
+		this->permanentAddress = obj.permanentAddress;
+		this->profileNumber = obj.profileNumber;
+		this->profilePhotoURL = obj.profilePhotoURL;
+		this->projectFundContributor = obj.projectFundContributor;
+		this->username = obj.username;
+		return *this;
+	}
 };
 #pragma endregion PERSON
 #pragma region TickLabIDCard
@@ -334,20 +355,6 @@ struct PersonPhoneNumber {
 };
 #pragma endregion PersonPhoneNumber
 
-#pragma region Department
-struct Department {
-	NullableInt departmentID;
-	NullableString departmentName;
-	NullableString departmentDescription;
-	string mssqlInsertCommand() {
-		return string("INSERT INTO Department VALUES(")
-			+ departmentID.mssqlFormat() + string(", ")
-			+ departmentName.mssqlFormat() + string(", ")
-			+ departmentDescription.mssqlFormat() + string(");");
-	}
-};
-#pragma endregion Department
-
 #pragma region WorkPosition
 struct WorkPosition {
 	NullableInt posID;
@@ -361,8 +368,31 @@ struct WorkPosition {
 			+ posDescription.mssqlFormat() + string(", ")
 			+ posInDepartment.mssqlFormat() + string(");");
 	}
+	int numberOfSlots;
+	int numberOfTaken = 0;
+	bool operator>(const WorkPosition& rhs) {
+		if (this->numberOfSlots == -1 && rhs.numberOfSlots != -1)
+			return true;
+		else if (this->numberOfSlots > rhs.numberOfSlots) return true;
+		return false;
+	}
 };
 #pragma endregion WorkPosition
+
+#pragma region Department
+struct Department {
+	NullableInt departmentID;
+	NullableString departmentName;
+	NullableString departmentDescription;
+	string mssqlInsertCommand() {
+		return string("INSERT INTO Department VALUES(")
+			+ departmentID.mssqlFormat() + string(", ")
+			+ departmentName.mssqlFormat() + string(", ")
+			+ departmentDescription.mssqlFormat() + string(");");
+	}
+	vector<WorkPosition> posVect;
+};
+#pragma endregion Department
 
 #pragma region Taking
 struct Taking {
@@ -525,14 +555,18 @@ int main() {
 		*/
 		ifs.open("dataResources/position.txt", ios::in);
 		vector<string> strPosNameVect;
+		vector<int> numOfSlotsPerPosVect;
 		while (!ifs.eof()) {
 			getline(ifs, line);
-			if (line.length()) strPosNameVect.push_back(line);
+			if (line.length()) {
+				strPosNameVect.push_back(line);
+				getline(ifs, line);
+				numOfSlotsPerPosVect.push_back(stoi(line));
+			}
 		}
 		ifs.close();
 		ofs.open("InsertWorkPosition.sql", ios::out);
 		int numberOfWorkPos = strPosNameVect.size();
-		vector<WorkPosition> workPositionVect;
 		WorkPosition workPos;
 		count = 0;
 		for (int i = 0; i < numberOfDepartment - 1; i++) {
@@ -541,7 +575,8 @@ int main() {
 				workPos.posInDepartment = departmentVect[i].departmentID;
 				workPos.posName = departmentVect[i].departmentName 
 					+ NullableString(string(" ")) + NullableString(strPosNameVect[j]);
-				workPositionVect.push_back(workPos);
+				workPos.numberOfSlots = numOfSlotsPerPosVect[j];
+				departmentVect[i].posVect.push_back(workPos);
 				ofs << workPos.mssqlInsertCommand() << endl;
 			}
 		}
@@ -553,7 +588,9 @@ int main() {
 				workPos.posName = line;
 				workPos.posInDepartment 
 					= departmentVect[departmentVect.size() - 1].departmentID;
-				workPositionVect.push_back(workPos);
+				getline(ifs, line);
+				workPos.numberOfSlots = stoi(line);
+				departmentVect[departmentVect.size() - 1].posVect.push_back(workPos);
 				ofs << workPos.mssqlInsertCommand() << endl;
 			}
 		}
@@ -562,6 +599,8 @@ int main() {
 		/**
 		 * generate Taking table data
 		*/
+		
+		
 		
 	}
 	catch (const char* msg) {
