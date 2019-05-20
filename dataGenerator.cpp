@@ -485,7 +485,7 @@ int main() {
 		*/
 		ofs.open("InsertPerson.sql", ios::out);
 		vector<Person> personVect;
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 100; i++) {
 			Person temp;
 			temp.profileNumber = i;
 			temp.dateOfBirth = randomBirthDate();
