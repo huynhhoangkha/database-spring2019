@@ -541,6 +541,10 @@ int main() {
 			}
 		}
 		ofs.close();
+		/**
+		 * generate Taking table data
+		*/
+		
 	}
 	catch (const char* msg) {
 		cerr << "--------------ERROR-------------" << endl;
