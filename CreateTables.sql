@@ -223,7 +223,7 @@ USE TickLabInfoSystem;
         fromDate DATE,
         toDate DATE,
         PRIMARY KEY(participantID, taskID),
-        FOREIGN KEY(participantID) REFERENCES Participant(participantID),
+        FOREIGN KEY(participantID) REFERENCES ProjectParticipant(participantID),
         FOREIGN KEY(taskID) REFERENCES Task(taskID)
     );
     -- Task remake
