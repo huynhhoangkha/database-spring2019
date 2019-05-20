@@ -121,9 +121,9 @@ T getLastInVector(vector<T> &vect) {
 
 template <typename T>
 void increasingSort(vector<T> &vect) {
-	int count = 1;
 	int vectSize = vect.size();
 	if (vectSize < 2) return;
+	int count = 1;
 	while (count > 0) {
 		count = 0;
 		for (int i = 0; i < vectSize - 1; i++) {
@@ -404,9 +404,9 @@ struct WorkPosition {
 	int numberOfSlots;
 	int numberOfTaken = 0;
 	bool operator>(const WorkPosition& rhs) {
-		if (this->numberOfSlots == -1 && rhs.numberOfSlots != -1)
-			return true;
-		else if (this->numberOfSlots > rhs.numberOfSlots) return true;
+		if (this->numberOfSlots == -1) if (rhs.numberOfSlots != -1) return true;
+		if (rhs.numberOfSlots == -1) return false;
+		if (this->numberOfSlots > rhs.numberOfSlots) return true;
 		return false;
 	}
 };
@@ -633,10 +633,37 @@ int main() {
 		/**
 		 * generate Taking table data
 		*/
+		ofs.open("InsertTakingTable.sql", ios::out);
 		numberOfDepartment = departmentVect.size();
 		vector<Person> tempPersonVect = personVect;
-		department = getLastInVector(departmentVect);
-		increasingSort(department.posVect);
+		for (int i = 0; i < numberOfDepartment; i++) {
+			increasingSort(departmentVect[i].posVect);
+			for (int j = 0; j < departmentVect[i].posVect.size(); j++) {
+				if (departmentVect[i].posVect[j].numberOfSlots == -1) break;
+				if (departmentVect[i].posVect[j].numberOfSlots == departmentVect[i].posVect[j].numberOfTaken) continue;
+				Taking taking;
+				taking.posIDTake = departmentVect[i].posVect[j].posID;
+				Person person = getRandomFromVector(tempPersonVect);
+				taking.profileNumberTake = person.profileNumber;
+				ofs << taking.mssqlInsertCommand() << endl;
+				departmentVect[i].posVect[j].numberOfTaken++;
+			}	
+		}
+		vector<WorkPosition> workPosVect;
+		for (int i = 0; i < numberOfDepartment; i++) {
+			for (int j = 0; j < departmentVect[i].posVect.size(); j++) {
+				if (departmentVect[i].posVect[j].numberOfSlots == -1) workPosVect.push_back(departmentVect[i].posVect[j]);
+			}
+		}
+		while(tempPersonVect.size()) {
+			Person person = getRandomFromVector(tempPersonVect);
+			int idx = rand() % workPosVect.size();
+			Taking taking;
+			taking.posIDTake = workPosVect[idx].posID;
+			taking.profileNumberTake = person.profileNumber;
+			ofs << taking.mssqlInsertCommand() << endl;
+		}
+		ofs.close();
 				
 	}
 	catch (const char* msg) {
