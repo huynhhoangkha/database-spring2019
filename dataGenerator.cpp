@@ -17,25 +17,29 @@ protected:
 public:
 	virtual bool isNull() = 0;
 	virtual operator T() = 0;
-	virtual string sqlFormat() = 0;
+	virtual string mssqlFormat() = 0;
 };
 
 class NullableString : public Nullable<string> {
 public:
 	NullableString(string _data = string()) { this->data = _data; }
 	NullableString operator=(const char* _data) { this->data = string(_data); return *this; }
+	NullableString(const NullableString &obj) { this->data = obj.data; }
 	bool isNull() { return (data.length() == 0); }
 	operator string() { return this->data; }
 	bool operator==(NullableString& rhs) { return this->data == rhs.data; }
-	string sqlFormat() {
+	string mssqlFormat() {
 		if (this->isNull()) return string("NULL");
 		else return string("'") + data + string("'");
+	}
+	NullableString operator+(const NullableString &rhs) {
+		return NullableString(this->data + rhs.data);
 	}
 	friend ostream& operator<<(ostream& out, NullableString& obj);
 };
 
 ostream& operator<<(ostream& out, NullableString& obj) {
-	out << obj.sqlFormat();
+	out << obj.mssqlFormat();
 	return out;
 }
 
@@ -57,7 +61,7 @@ public:
 	}
 	bool isNull() { return !this->initialized; };
 	operator Date() { return this->data; };
-	string sqlFormat() {
+	string mssqlFormat() {
 		if (this->isNull()) return string("NULL");
 		else {
 			string day = to_string(this->data.day);
@@ -74,7 +78,7 @@ public:
 	friend ostream& operator<<(ostream& out, NullableDate& obj);
 };
 
-ostream& operator<<(ostream& out, NullableDate& obj) { out << obj.sqlFormat(); return out; }
+ostream& operator<<(ostream& out, NullableDate& obj) { out << obj.mssqlFormat(); return out; }
 
 class NullableInt : Nullable<int> {
 	bool initialized;
@@ -85,11 +89,11 @@ public:
 	operator int() { return this->data; }
 	operator string() { return to_string(this->data); }
 	bool operator==(NullableInt& i) { return this->data == i.data; }
-	string sqlFormat() { return this->isNull() ? string("NULL") : to_string(this->data); }
+	string mssqlFormat() { return this->isNull() ? string("NULL") : to_string(this->data); }
 	friend ostream& operator<<(ostream& out, NullableInt& obj);
 };
 
-ostream& operator<<(ostream& out, NullableInt& obj) { out << obj.sqlFormat(); return out; }
+ostream& operator<<(ostream& out, NullableInt& obj) { out << obj.mssqlFormat(); return out; }
 
 #pragma endregion DATA_DEFINE
 
@@ -270,26 +274,26 @@ struct Person {
 	NullableDate passportDateOfExpiry;
 	NullableString profilePhotoURL;
     NullableInt projectFundContributor;
-	string mysqlInsertCommand() {
+	string mssqlInsertCommand() {
 		return string("INSERT INTO Person VALUES(")
-			+ profileNumber.sqlFormat() + string(", ")
-			+ username.sqlFormat() + string(", ")
-			+ passwd.sqlFormat() + string(", ")
-			+ gender.sqlFormat() + string(", ")
-			+ permanentAddress.sqlFormat() + string(", ")
-			+ dateOfBirth.sqlFormat() + string(", ")
-			+ firstName.sqlFormat() + string(", ")
-			+ middleName.sqlFormat() + string(", ")
-			+ lastName.sqlFormat() + string(", ")
-			+ nationality.sqlFormat() + string(", ")
-			+ nationalIDNumber.sqlFormat() + string(", ")
-			+ nationalIDIssueDate.sqlFormat() + string(", ")
-			+ passportNumber.sqlFormat() + string(", ")
-			+ passportPlaceOfIssue.sqlFormat() + string(", ")
-			+ passportDateOfIssue.sqlFormat() + string(", ")
-			+ passportDateOfExpiry.sqlFormat() + string(", ")
-            + projectFundContributor.sqlFormat() + string(", ")
-			+ profilePhotoURL.sqlFormat() + string(");");
+			+ profileNumber.mssqlFormat() + string(", ")
+			+ username.mssqlFormat() + string(", ")
+			+ passwd.mssqlFormat() + string(", ")
+			+ gender.mssqlFormat() + string(", ")
+			+ permanentAddress.mssqlFormat() + string(", ")
+			+ dateOfBirth.mssqlFormat() + string(", ")
+			+ firstName.mssqlFormat() + string(", ")
+			+ middleName.mssqlFormat() + string(", ")
+			+ lastName.mssqlFormat() + string(", ")
+			+ nationality.mssqlFormat() + string(", ")
+			+ nationalIDNumber.mssqlFormat() + string(", ")
+			+ nationalIDIssueDate.mssqlFormat() + string(", ")
+			+ passportNumber.mssqlFormat() + string(", ")
+			+ passportPlaceOfIssue.mssqlFormat() + string(", ")
+			+ passportDateOfIssue.mssqlFormat() + string(", ")
+			+ passportDateOfExpiry.mssqlFormat() + string(", ")
+            + projectFundContributor.mssqlFormat() + string(", ")
+			+ profilePhotoURL.mssqlFormat() + string(");");
 	}
 };
 #pragma endregion PERSON
@@ -298,11 +302,11 @@ struct TickLabIDCard {
 	NullableInt profileNumber;
 	NullableDate dateOfIssue;
 	NullableString rfidNumber;
-	string mysqlInsertCommand() {
+	string mssqlInsertCommand() {
 		return string("INSERT INTO TickLabIDCard VALUES(")
-			+ profileNumber.sqlFormat() + string(", ")
-			+ dateOfIssue.sqlFormat() + string(", ")
-			+ rfidNumber.sqlFormat() + string(");");
+			+ profileNumber.mssqlFormat() + string(", ")
+			+ dateOfIssue.mssqlFormat() + string(", ")
+			+ rfidNumber.mssqlFormat() + string(");");
 	}
 };
 #pragma endregion TickLabIDCard
@@ -310,10 +314,10 @@ struct TickLabIDCard {
 struct PersonEmailAddress {
 	NullableInt profileNumber;
 	NullableString emailAddress;
-	string mysqlInsertCommand() {
+	string mssqlInsertCommand() {
 		return string("INSERT INTO PersonEmailAddress VALUES(")
-			+ profileNumber.sqlFormat() + string(", ")
-			+ emailAddress.sqlFormat() + string(");");
+			+ profileNumber.mssqlFormat() + string(", ")
+			+ emailAddress.mssqlFormat() + string(");");
 	}
 };
 #pragma endregion PersonEmailAddress
@@ -322,10 +326,10 @@ struct PersonEmailAddress {
 struct PersonPhoneNumber {
 	NullableInt profileNumber;
 	NullableString phoneNumber;
-	string mysqlInsertCommand() {
-			return string("INSERT INTO PersonPhoneNumber VALUES(")
-			+ profileNumber.sqlFormat() + string(", ")
-			+ phoneNumber.sqlFormat() + string(");");
+	string mssqlInsertCommand() {
+		return string("INSERT INTO PersonPhoneNumber VALUES(")
+		+ profileNumber.mssqlFormat() + string(", ")
+		+ phoneNumber.mssqlFormat() + string(");");
 	}
 };
 #pragma endregion PersonPhoneNumber
@@ -335,25 +339,88 @@ struct Department {
 	NullableInt departmentID;
 	NullableString departmentName;
 	NullableString departmentDescription;
-	string mysqlInsertCommand() {
+	string mssqlInsertCommand() {
 		return string("INSERT INTO Department VALUES(")
-			+ departmentID.sqlFormat() + string(", ")
-			+ departmentName.sqlFormat() + string(", ")
-			+ departmentDescription.sqlFormat() + string(");");
+			+ departmentID.mssqlFormat() + string(", ")
+			+ departmentName.mssqlFormat() + string(", ")
+			+ departmentDescription.mssqlFormat() + string(");");
 	}
 };
 #pragma endregion Department
+
+#pragma region WorkPosition
+struct WorkPosition {
+	NullableInt posID;
+	NullableString posName;
+	NullableString posDescription;
+	NullableInt posInDepartment;
+	string mssqlInsertCommand() {
+		return string("INSERT INTO WorkPosition VALUES(")
+			+ posID.mssqlFormat() + string(", ")
+			+ posName.mssqlFormat() + string(", ")
+			+ posDescription.mssqlFormat() + string(", ")
+			+ posInDepartment.mssqlFormat() + string(");");
+	}
+};
+#pragma endregion WorkPosition
+
+#pragma region Taking
+struct Taking {
+	NullableInt profileNumberTake;
+	NullableInt posIDTake;
+	NullableDate takeFromdate;
+	NullableDate takeToDate;
+	string mssqlInsertCommand() {
+		return string("INSERT INTO Taking VALUES(")
+			+ profileNumberTake.mssqlFormat() + string(", ")
+			+ posIDTake.mssqlFormat() + string(", ")
+			+ takeFromdate.mssqlFormat() + string(", ")
+			+ takeToDate.mssqlFormat() + string(");");
+	}
+};
+#pragma endregion Taking
+
+#pragma region Project
+struct Project {
+	NullableInt projectID;
+	NullableString projectName;
+	NullableDate projectStartTime;
+	NullableDate projectEndTime;
+	NullableString projectStatus;
+	NullableDate expectedFinishTime;
+	NullableString projectDescription;
+	NullableInt TickLabBudget;
+	NullableInt projectManagerProfileNumber;
+	NullableInt belongToDepartmentHave;
+	string mssqlInsertCommand() {
+		return string("INSERT INTO Project VALUES(")
+			+ projectID.mssqlFormat() + string(", ")
+			+ projectName.mssqlFormat() + string(", ")
+			+ projectStartTime.mssqlFormat() + string(", ")
+			+ projectEndTime.mssqlFormat() + string(", ")
+			+ projectStatus.mssqlFormat() + string(", ")
+			+ expectedFinishTime.mssqlFormat() + string(", ")
+			+ projectDescription.mssqlFormat() + string(", ")
+			+ TickLabBudget.mssqlFormat() + string(", ")
+			+ projectManagerProfileNumber.mssqlFormat() + string(", ")
+			+ belongToDepartmentHave.mssqlFormat() + string(");");
+	}
+};
+#pragma endregion Project
 
 #pragma endregion TABLE
 
 #pragma region main
 int main() {
-	fstream fs;
+	int count;
+	fstream ofs;
+	fstream ifs;
+	string line;
 	try {
 		/**
 		 * Section: generate Person table data
 		*/
-		fs.open("InsertPerson.sql", ios::out);
+		ofs.open("InsertPerson.sql", ios::out);
 		vector<Person> personVect;
 		for (int i = 0; i < 30; i++) {
 			Person temp;
@@ -367,14 +434,14 @@ int main() {
 			temp.nationality = "Viet Nam";
 			temp.nationalIDNumber = randomNationIDNumber();
 			temp.nationalIDIssueDate = randomDateOfIssue(temp.dateOfBirth, 15 + rand() % 3);
-			fs << temp.mysqlInsertCommand() << endl;
+			ofs << temp.mssqlInsertCommand() << endl;
 			personVect.push_back(temp);
 		}
-		fs.close();
+		ofs.close();
 		/**
 		 * Section: generate TickLab ID Card table data
 		*/
-		fs.open("InsertTickLabIDCard.sql", ios::out);
+		ofs.open("InsertTickLabIDCard.sql", ios::out);
 		int numberOfPerson = personVect.size();
 		int temp;
 		vector<TickLabIDCard> ticklabIDCardVect;
@@ -386,14 +453,14 @@ int main() {
 				card.rfidNumber = randomNationIDNumber();
 				card.dateOfIssue = randomDateOfIssue(personVect[i].dateOfBirth, 18 + rand() % 5);
 				ticklabIDCardVect.push_back(card);
-				fs << card.mysqlInsertCommand() << endl;
+				ofs << card.mssqlInsertCommand() << endl;
 			}
 		}
-		fs.close();
+		ofs.close();
 		/**
 		 * Email address generate
 		*/
-		fs.open("InsertEmailAddress.sql", ios::out);
+		ofs.open("InsertEmailAddress.sql", ios::out);
 		vector<NullableString> emailStrVect;
 		vector<PersonEmailAddress> personEmailAddressVect;
 		for (int i = 0; i < numberOfPerson; i++) {
@@ -407,14 +474,14 @@ int main() {
 				}
 				emailStrVect.push_back(email.emailAddress);
 				personEmailAddressVect.push_back(email);
-				fs << email.mysqlInsertCommand() << endl;
+				ofs << email.mssqlInsertCommand() << endl;
 			}
 		}
-		fs.close();
+		ofs.close();
 		/**
 		 * Person phone number generate
 		*/
-		fs.open("InsertPersonPhoneNumber.sql", ios::out);
+		ofs.open("InsertPersonPhoneNumber.sql", ios::out);
 		vector<PersonPhoneNumber> personPhoneNumberVect;
 		for (int i = 0; i < numberOfPerson; i++) {
 			temp = rand() % 3 + 1;
@@ -423,31 +490,79 @@ int main() {
 				phoneNumber.profileNumber = i;
 				phoneNumber.phoneNumber = randomPhoneNumber();
 				personPhoneNumberVect.push_back(phoneNumber);
-				fs << phoneNumber.mysqlInsertCommand() << endl;
+				ofs << phoneNumber.mssqlInsertCommand() << endl;
 			}
 		}
-		fs.close();
+		ofs.close();
 		/**
 		 * Department data generate
 		*/
-		fs.open("InsertDepartment.sql", ios::out);
-		fstream ifs;
+		ofs.open("InsertDepartment.sql", ios::out);
 		ifs.open("dataResources/department.txt", ios::in);
 		vector<string> departmentNameVect;
-		string line;
 		while (!ifs.eof()) {
 			getline(ifs, line);
 			if (line.length()) departmentNameVect.push_back(line);
 		}
 		ifs.close();
+		vector<Department> departmentVect;
 		int numberOfDepartment = departmentNameVect.size();
 		for (int i = 0; i < numberOfDepartment; i++) {
 			Department department;
 			department.departmentID = i;
 			department.departmentName = departmentNameVect[i];
-			fs << department.mysqlInsertCommand() << endl;
+			ofs << department.mssqlInsertCommand() << endl;
+			departmentVect.push_back(department);
 		}
-		fs.close();
+		Department department;
+		department.departmentID = numberOfDepartment;
+		department.departmentName = "Administration";
+		ofs << department.mssqlInsertCommand() << endl;
+		departmentVect.push_back(department);
+		ofs.close();
+		/**
+		 * generate job position
+		*/
+		ifs.open("dataResources/position.txt", ios::in);
+		vector<string> strPosNameVect;
+		while (!ifs.eof()) {
+			getline(ifs, line);
+			if (line.length()) strPosNameVect.push_back(line);
+		}
+		ifs.close();
+		ofs.open("InsertWorkPosition.sql", ios::out);
+		int numberOfWorkPos = strPosNameVect.size();
+		vector<WorkPosition> workPositionVect;
+		WorkPosition workPos;
+		count = 0;
+		for (int i = 0; i < numberOfDepartment - 1; i++) {
+			for (int j = 0; j < numberOfWorkPos; j++) {
+				workPos.posID = count++;
+				workPos.posInDepartment = departmentVect[i].departmentID;
+				workPos.posName = departmentVect[i].departmentName 
+					+ NullableString(string(" ")) + NullableString(strPosNameVect[j]);
+				workPositionVect.push_back(workPos);
+				ofs << workPos.mssqlInsertCommand() << endl;
+			}
+		}
+		ifs.open("dataResources/administrationPos.txt", ios::in);
+		while (!ifs.eof()) {
+			getline(ifs, line);
+			if (line.length()) {
+				workPos.posID = count++;
+				workPos.posName = line;
+				workPos.posInDepartment 
+					= departmentVect[departmentVect.size() - 1].departmentID;
+				workPositionVect.push_back(workPos);
+				ofs << workPos.mssqlInsertCommand() << endl;
+			}
+		}
+		ifs.close();
+		ofs.close();
+		/**
+		 * generate Taking table data
+		*/
+		
 	}
 	catch (const char* msg) {
 		cerr << "--------------ERROR-------------" << endl;
