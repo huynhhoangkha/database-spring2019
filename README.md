@@ -62,6 +62,6 @@ II. Relationships:
 	> [Draw.IO Mapping File](https://drive.google.com/file/d/1TKHB5bIFGBcwnpDZCCxpE8Vr54ypd_19/view)
 
 # Phase 5: creating database using SQL statements
-- File: MySQL.sql <br/>
+- File: *.sql <br/>
 	**Kha + Phong:** Generate data and SQL code for inserting into tables <br/>
 	**Dat:** Write SQL code for creating tables and create indexes
