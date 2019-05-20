@@ -91,10 +91,21 @@ USE TickLabInfoSystem;
         projectDescription TEXT,
         TickLabBudget MONEY,
         projectManager INT,
-        belongToDepartmentHave INT,
+        ofDepartment INT,
         PRIMARY KEY(projectID),
-        FOREIGN KEY(projectManagerProfileNumber) REFERENCES Person(profileNumber),
-        FOREIGN KEY(belongToDepartmentHave) REFERENCES Department(departmentID)
+        FOREIGN KEY(projectManager) REFERENCES Person(profileNumber),
+        FOREIGN KEY(ofDepartment) REFERENCES Department(departmentID)
+    );
+        -- Project's paricipant
+    CREATE TABLE ProjectParticipant (
+        participantID INT NOT NULL,
+        projectID INT,
+        profileNumber INT,
+        formDate DATE,
+        toDate DATE,
+        PRIMARY KEY(participantID),
+        FOREIGN KEY(projectID) REFERENCES Project(projectID),
+        FOREIGN KEY(profileNumber) REFERENCES Person(profileNumber)
     );
     -- Project related documents
     CREATE TABLE ProjectRelatedDoc (
@@ -117,7 +128,7 @@ USE TickLabInfoSystem;
     CREATE TABLE InternalProject (
         internalProjectID INT,
         PRIMARY KEY(internalProjectID),
-        FOREIGN KEY(interalProjectID) REFERENCES Project(projectID)
+        FOREIGN KEY(internalProjectID) REFERENCES Project(projectID)
     );
     -- Community activity
     CREATE TABLE CommunityActivity (
@@ -205,14 +216,15 @@ USE TickLabInfoSystem;
         PRIMARY KEY(taskID),
         FOREIGN KEY(ofProject) REFERENCES Project(projectID)
     );
-    -- Task's paricipate
-    CREATE TABLE Participate (
-        profileNumberParticipate INT NOT NULL,
-        taskIDParticipate INT NOT NULL,
-        score INT,
-        PRIMARY KEY(profileNumberParticipate, taskIDParticipate),
-        FOREIGN KEY(profileNumberParticipate) REFERENCES Person(profileNumber),
-        FOREIGN KEY(taskIDParticipate) REFERENCES Task(taskID)
+    -- Task's participant
+    CREATE TABLE TaskParticipant (
+        participantID INT NOT NULL,
+        taskID INT NOT NULL,
+        fromDate DATE,
+        toDate DATE,
+        PRIMARY KEY(participantID, taskID),
+        FOREIGN KEY(participantID) REFERENCES Participate(participantID),
+        FOREIGN KEY(taskID) REFERENCES Task(taskID)
     );
     -- Task remake
     CREATE TABLE TaskRemark (
