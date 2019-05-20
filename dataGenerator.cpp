@@ -24,6 +24,7 @@ class NullableString : public Nullable<string> {
 public:
 	NullableString(string _data = string()) { this->data = _data; }
 	NullableString operator=(const char* _data) { this->data = string(_data); return *this; }
+	NullableString(const NullableString &obj) { this->data = obj.data; }
 	bool isNull() { return (data.length() == 0); }
 	operator string() { return this->data; }
 	bool operator==(NullableString& rhs) { return this->data == rhs.data; }
@@ -529,12 +530,11 @@ int main() {
 		vector<WorkPosition> workPositionVect;
 		WorkPosition workPos;
 		count = 0;
-		
 		for (int i = 0; i < numberOfDepartment; i++) {
 			for (int j = 0; j < numberOfWorkPos; j++) {
 				workPos.posID = count++;
 				workPos.posInDepartment = departmentVect[i].departmentID;
-				workPos.posName = departmentVect[i].departmentName + workPositionVect[j].posName;
+				workPos.posName = (departmentVect[i].departmentName) + (workPositionVect[j].posName);
 				workPositionVect.push_back(workPos);
 				ofs << workPos.mssqlInsertCommand() << endl;
 			}
