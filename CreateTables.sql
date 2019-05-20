@@ -90,7 +90,7 @@ USE TickLabInfoSystem;
         expectedFinishTime DATE,
         projectDescription TEXT,
         TickLabBudget MONEY,
-        projectManagerProfileNumber INT,
+        projectManager INT,
         belongToDepartmentHave INT,
         PRIMARY KEY(projectID),
         FOREIGN KEY(projectManagerProfileNumber) REFERENCES Person(profileNumber),
@@ -187,7 +187,7 @@ USE TickLabInfoSystem;
     CREATE TABLE Taking (
         profileNumberTake INT NOT NULL,
         posIDTake INT NOT NULL,
-        takeFromdate DATE,
+        takeFromDate DATE,
         takeToDate DATE,
         PRIMARY KEY(profileNumberTake, posIDTake),
         FOREIGN KEY(profileNumberTake) REFERENCES Person(profileNumber),
