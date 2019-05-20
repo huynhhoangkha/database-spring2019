@@ -104,6 +104,39 @@ bool existIn(vector<T> vect, T key) {
 	for (int i = 0; i < vectSize; i++) if (vect[i] == key) return true;
 	return false;
 }
+
+template <typename T>
+T getRandomFromVector(vector<T> &vect) {
+	int pos = rand() % vect.size();
+	T res = vect[pos];
+	vect.erase(vect.begin() + pos);
+	return res;
+}
+
+template <typename T>
+T getLastInVector(vector<T> &vect) {
+	if (vect.size() == 0) throw "Empty vector";
+	return vect[vect.size() - 1];
+}
+
+template <typename T>
+void increasingSort(vector<T> &vect) {
+	int count = 1;
+	int vectSize = vect.size();
+	if (vectSize < 2) return;
+	while (count > 0) {
+		count = 0;
+		for (int i = 0; i < vectSize - 1; i++) {
+			if (vect[i] > vect[i+1]) {
+				T temp = vect[i];
+				vect[i] = vect[i+1];
+				vect[i+1] = temp;
+				count++;
+			}
+		}
+	}
+}
+
 #pragma endregion Utilities
 
 #pragma region RANDOM_FUNCTION
@@ -569,7 +602,7 @@ int main() {
 		int numberOfWorkPos = strPosNameVect.size();
 		WorkPosition workPos;
 		count = 0;
-		for (int i = 0; i < numberOfDepartment - 1; i++) {
+		for (int i = 0; i < numberOfDepartment; i++) {
 			for (int j = 0; j < numberOfWorkPos; j++) {
 				workPos.posID = count++;
 				workPos.posInDepartment = departmentVect[i].departmentID;
@@ -581,6 +614,7 @@ int main() {
 			}
 		}
 		ifs.open("dataResources/administrationPos.txt", ios::in);
+		if (ifs.fail()) throw "Unable to open dataResources/administrationPos.txt";
 		while (!ifs.eof()) {
 			getline(ifs, line);
 			if (line.length()) {
@@ -599,9 +633,11 @@ int main() {
 		/**
 		 * generate Taking table data
 		*/
-		
-		
-		
+		numberOfDepartment = departmentVect.size();
+		vector<Person> tempPersonVect = personVect;
+		department = getLastInVector(departmentVect);
+		increasingSort(department.posVect);
+				
 	}
 	catch (const char* msg) {
 		cerr << "--------------ERROR-------------" << endl;
