@@ -85,7 +85,7 @@ END
 GO
 
 -- Find person First/Last name and print out national ID number and TickLab ID number
-CREATE PROCEDURE printPersonIDByFirstNameOrLastName
+CREATE PROC printPersonIDByFirstNameOrLastName
 	@name varchar(256)
 AS
 BEGIN
