@@ -1,5 +1,5 @@
 -- Phong
--- Get person's age by profileNumber
+-- Hàm nhập ID trả về độ tuổi
 CREATE FUNCTION AGE
 ( @profileNumber int )
 RETURN int
@@ -12,7 +12,7 @@ BEGIN
 	RETURN @age
 END
 
--- Get number of ticklab id card by profileNumber
+-- Hàm nhập ID trả về số lượng ticklab card
 CREATE FUNCTION tickLabCardCount
 ( @profileNumber int )
 returns int 
