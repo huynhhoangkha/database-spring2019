@@ -68,7 +68,7 @@ END
 
 
 -- Phong
--- Insert/add person phone number 
+-- Thêm số điện thoại
 CREATE PROC addPersonPhoneNumber
 	@profileNumber int,
 	@phoneNumber varchar(11)
@@ -84,7 +84,7 @@ BEGIN
 END
 GO
 
--- Find person First/Last name and print out national ID number and TickLab ID number
+-- Tìm dựa theo first name hoặc last name rồi in ra national id và ticklab id
 CREATE PROC printPersonIDByFirstNameOrLastName
 	@name varchar(256)
 AS
